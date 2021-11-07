@@ -1,0 +1,30 @@
+{
+  "name": "static-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt generate",
+    "lint": "eslint \"{src/**/*,*}.js\"",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/botblock/static-site.git"
+  },
+  "keywords": [],
+  "author": "Matt (IPv4) Cowley",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/botblock/static-site/issues"
+  },
+  "homepage": "https://github.com/botblock/static-site#readme",
+  "dependencies": {
+    "nuxt": "^2.15.8"
+  },
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  }
+}
