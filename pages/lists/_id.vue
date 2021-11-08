@@ -3,9 +3,9 @@
 </template>
 
 <script>
-const getList = require('../../util/getList');
+import getList from '../../util/getList';
 
-module.exports = {
+export default {
     asyncData({ params, error }) {
         const list = getList(params.id);
         if (list) return { list };

@@ -21,10 +21,13 @@
     "url": "https://github.com/botblock/static-site/issues"
   },
   "homepage": "https://github.com/botblock/static-site#readme",
-  "dependencies": {
-    "nuxt": "^2.15.8"
-  },
   "devDependencies": {
-    "eslint": "^8.2.0"
+    "eslint": "^8.2.0",
+    "nuxt": "^2.15.8",
+    "sass": "^1.43.4",
+    "sass-loader": "^10.2.0"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
   }
 }

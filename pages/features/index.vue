@@ -3,12 +3,12 @@
 </template>
 
 <script>
-const featuresData = require('../../../util/getFeatures')();
+import getFeatures from '../../util/getFeatures';
 
-module.exports = {
+export default {
     data() {
         return {
-            features: featuresData,
+            features: getFeatures(),
         };
     },
 };

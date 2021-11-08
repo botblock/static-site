@@ -1,15 +1,15 @@
-const listsData = require('./getLists')();
-const featuresData = require('./getFeatures')();
+import getLists from './getLists';
+import getFeatures from './getFeatures';
 
-module.exports = id => {
-    const match = listsData.find(list => list.id === id);
+export default id => {
+    const match = getLists().find(list => list.id === id);
     if (!match) return null;
 
     // Clone the object
     const list = { ...match };
 
     // Load full features
-    list.features = featuresData.map(feature => ({
+    list.features = getFeatures().map(feature => ({
         ...feature,
         value: list.features.includes(feature.id) ? 1 : 0,
     })).sort((a, b) => {

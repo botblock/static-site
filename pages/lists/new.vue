@@ -3,13 +3,13 @@
 </template>
 
 <script>
-const listsData = require('../../util/getLists')();
-const getList = require('../../util/getList');
+import getLists from '../../util/getLists';
+import getList from '../../util/getList';
 
-module.exports = {
+export default {
     data() {
         return {
-            lists: listsData
+            lists: getLists()
                 .filter(list => !list.defunct)
                 .sort((a, b) => a.added > b.added ? -1: 1)
                 .slice(0, 4)

@@ -3,13 +3,13 @@
 </template>
 
 <script>
-const listsData = require('../../../util/getLists')();
-const getList = require('../../../util/getList');
+import getLists from '../../util/getLists';
+import getList from '../../util/getList';
 
-module.exports = {
+export default {
     asyncData({ params }) {
         return {
-            lists: listsData
+            lists: getLists()
                 .filter(list => list.name.toLowerCase().includes(params.query.toLowerCase()))
                 .map(list => getList(list.id)),
         };

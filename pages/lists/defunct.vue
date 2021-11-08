@@ -3,13 +3,13 @@
 </template>
 
 <script>
-const listsData = require('../../util/getLists')();
-const getList = require('../../util/getList');
+import getLists from '../../util/getLists';
+import getList from '../../util/getList';
 
-module.exports = {
+export default {
     data() {
         return {
-            lists: listsData
+            lists: getLists()
                 .filter(list => list.defunct)
                 .map(list => getList(list.id)),
         };

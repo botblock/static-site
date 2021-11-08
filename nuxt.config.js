@@ -7,11 +7,12 @@ const jsonData = dir => fs.readdirSync(path.join(__dirname, 'data', 'data', dir)
 
 module.exports = {
     target: 'static',
+    css: [ 'modern-normalize' ],
     generate: {
         fallback: '404.html',
         routes: [
             ...jsonData('lists').map(list => `/lists/${list}`),
-            ...jsonData('features').map(feature => `/lists/features/${feature}`),
+            ...jsonData('features').map(feature => `/features/${feature}`),
         ],
     },
 };

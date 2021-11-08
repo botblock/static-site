@@ -3,17 +3,17 @@
 </template>
 
 <script>
-const featuresData = require('../../../util/getFeatures')();
-const listsData = require('../../../util/getLists')();
-const getList = require('../../../util/getList');
+import getFeatures from '../../util/getFeatures';
+import getLists from '../../util/getLists';
+import getList from '../../util/getList';
 
-module.exports = {
+export default {
     asyncData({ params, error }) {
-        const feature = featuresData.find(feature => feature.id === params.id);
+        const feature = getFeatures().find(feature => feature.id === params.id);
         if (!feature) return error({ statusCode: 404, message: 'Feature not found' });
         return {
             feature,
-            lists: listsData
+            lists: getLists()
                 .filter(list => list.features.includes(feature.id))
                 .map(list => getList(list.id)),
         };
