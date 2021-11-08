@@ -41,9 +41,8 @@
 </template>
 
 <style scoped lang="scss">
+@import '~fontsource-megrim';
 @import '../scss/globals';
-
-@import url('https://fonts.googleapis.com/css2?family=Megrim&display=swap');
 
 .hero {
     .container {
@@ -88,16 +87,16 @@
                 position: relative;
                 z-index: 1;
                 font-family: 'Megrim', sans-serif;
-                font-weight: 400;
+                font-weight: 100;
                 line-height: 1.25;
                 color: lighten($brand, 50%);
                 text-shadow: 0 0 .5rem saturate($brand, 25%),
-                0 0 1rem saturate($brand, 25%),
-                0 0 2rem saturate($brand, 25%),
-                0 0 4rem $brand,
-                0 0 8rem $brand,
-                0 0 16rem $brand,
-                0 0 32rem $brand;
+                    0 0 1rem saturate($brand, 25%),
+                    0 0 2rem saturate($brand, 25%),
+                    0 0 4rem $brand,
+                    0 0 8rem $brand,
+                    0 0 16rem $brand,
+                    0 0 32rem $brand;
 
                 &::before,
                 &::after {
@@ -105,23 +104,23 @@
                     display: block;
                     position: absolute;
                     width: 100%;
-                    height: .05em;
+                    height: .25rem;
                     background: lighten(desaturate($dark, 100%), 7.5%);
                     z-index: -1;
-                }
-
-                &::before {
-                    top: .5em;
-                }
-
-                &::after {
-                    bottom: .45em;
                 }
             }
 
             h2 {
                 font-size: 6rem;
                 margin: 0 0 1rem;
+
+                &::before {
+                    top: 3rem;
+                }
+
+                &::after {
+                    bottom: 3rem;
+                }
             }
 
             p {
@@ -130,6 +129,10 @@
 
                 &::before {
                     display: none;
+                }
+
+                &::after {
+                    bottom: .75rem;
                 }
             }
         }

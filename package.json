@@ -24,12 +24,14 @@
   "devDependencies": {
     "eslint": "^8.2.0",
     "nuxt": "^2.15.8",
+    "nuxt-resolve-url-loader": "^1.0.4",
     "sass": "^1.43.4",
     "sass-loader": "^10.2.0"
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "fontsource-megrim": "^4.0.0",
     "modern-normalize": "^1.1.0"
   }
 }
