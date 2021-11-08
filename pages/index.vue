@@ -13,22 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="cta">
-            <div class="container">
-                <div>
-                    <p><b>BotBlock API</b></p>
-                    <h2>Simplify sending your bot's guild count with the BotBlock API.</h2>
-                    <p>
-                        Using the BotBlock API allows you to make one POST call to send your bot's guild count to all
-                        the bot lists we support.
-
-                        Or, use the BotBlock API to get data about all the lists we track and build your own custom
-                        automations directly.
-                    </p>
-                </div>
-                <NuxtLink to="/docs">Read the docs <FA :icon="icons.faAngleRight" /></NuxtLink>
-            </div>
-        </div>
+        <ApiCta />
         <div class="lists">
             <div class="container">
                 <h2>Recent Lists</h2>
@@ -45,6 +30,8 @@
 @import '../scss/globals';
 
 .hero {
+    margin: 0 0 -4rem;
+
     .container {
         display: flex;
         align-items: center;
@@ -139,95 +126,6 @@
     }
 }
 
-.cta {
-    background: $brand;
-    color: $dark;
-    margin: 2rem 0 5rem;
-    position: relative;
-    z-index: 1;
-
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-style: solid;
-        z-index: -1;
-    }
-
-    $triangle-height: 5rem;
-
-    &::before {
-        right: 0;
-        top: -$triangle-height;
-        border-width: 0 0 $triangle-height calc(100vw - 1rem);
-        border-color: transparent transparent $brand transparent;
-    }
-
-    &::after {
-        left: 0;
-        bottom: -$triangle-height;
-        border-width: $triangle-height calc(100vw - 1rem) 0 0;
-        border-color: $brand transparent transparent
-    }
-
-    .container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-
-        div {
-            margin: 0 2rem 0 0;
-
-            h2 {
-                font-size: 3rem;
-                font-weight: 600;
-                margin: .25rem 0 1rem;
-            }
-
-            p {
-                font-size: 1.25rem;
-                margin: 0;
-                color: rgba($dark, .75);
-
-                b {
-                    font-size: 1rem;
-                    font-weight: 600;
-                    letter-spacing: .1px;
-                    margin: 0 0 .5rem;
-                    padding: .25rem .75rem;
-                    border-radius: 1rem;
-                    background: rgba($dark, .25);
-                    color: $light;
-                    display: inline-block;
-                }
-            }
-        }
-
-        a {
-            padding: .5rem 1rem;
-            margin: 1rem;
-            border-radius: .75rem;
-            background: $dark;
-            color: $light;
-            text-decoration: none;
-            font-size: 1.5rem;
-            white-space: nowrap;
-
-            &:hover,
-            &:focus {
-                background: rgba($dark, .75);
-            }
-
-            > svg {
-                margin: 0 0 0 .5rem;
-            }
-        }
-    }
-}
-
 .lists {
     .container {
         display: flex;
@@ -277,17 +175,19 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import getLists from '../util/getLists';
 import getList from '../util/getList';
 import Nav from '../components/nav';
+import ApiCta from '../components/apiCta';
 import List from '../components/list';
 import Footer from '../components/footer';
 import FA from '../components/fa';
 
 const lists = getLists()
-    .filter(list => !list.defunct)
+    .filter(list => !list.defunct && list.display)
     .map(list => getList(list.id));
 
 export default {
     components: {
         Nav,
+        ApiCta,
         List,
         Footer,
         FA,

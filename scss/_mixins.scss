@@ -1,0 +1,35 @@
+@import './globals';
+
+@mixin _triangleBase($selector) {
+    position: relative;
+    z-index: 1;
+
+    &::#{$selector} {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        z-index: -1;
+        @content;
+    }
+}
+
+@mixin triangleBefore($height: 5rem) {
+    @include _triangleBase('before') {
+        right: 0;
+        top: -$height;
+        border-width: 0 0 $height calc(100vw - 1rem);
+        border-color: transparent transparent $brand transparent;
+    }
+}
+
+@mixin triangleAfter($height: 5rem) {
+    @include _triangleBase('after') {
+        left: 0;
+        bottom: -$height;
+        border-width: $height calc(100vw - 1rem) 0 0;
+        border-color: $brand transparent transparent;
+    }
+}

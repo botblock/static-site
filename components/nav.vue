@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="container">
+        <div :class="{ container: true, dark }">
             <NuxtLink to="/" class="logo">
                 <Logo />
             </NuxtLink>
@@ -25,6 +25,17 @@
     align-items: center;
     justify-content: space-between;
     padding: 1rem 0;
+
+    &.dark {
+        a {
+            color: $dark;
+
+            &:hover,
+            &:focus {
+                color: rgba($dark, .75);
+            }
+        }
+    }
 
     a {
         margin: 0 1rem;
@@ -71,6 +82,12 @@ export default {
     components: {
         Logo,
         FA,
+    },
+    props: {
+        dark: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
