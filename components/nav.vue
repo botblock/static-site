@@ -6,12 +6,12 @@
             </NuxtLink>
 
             <div>
-                <NuxtLink to="/">Lists</NuxtLink>
+                <NuxtLink to="/lists">Lists</NuxtLink>
                 <NuxtLink to="/docs">API Docs</NuxtLink>
             </div>
 
             <div>
-                <a href="https://github.com/botblock">GitHub</a>
+                <a href="/github" target="_blank">GitHub <FA :icon="icons.faExternalLinkAlt" /></a>
             </div>
         </div>
     </div>
@@ -26,15 +26,6 @@
     justify-content: space-between;
     padding: 1rem 0;
 
-    .logo {
-        margin: 0 4rem 0 0;
-        padding: 0;
-
-        > svg {
-            width: 4rem;
-        }
-    }
-
     a {
         margin: 0 1rem;
         padding: .25rem .5rem;
@@ -44,7 +35,23 @@
 
         &:hover,
         &:focus {
-            color: $blue-dark;
+            color: $brand;
+        }
+
+        > svg {
+            margin: 0 0 0 .125rem;
+            height: .75rem;
+            vertical-align: baseline;
+        }
+
+        &.logo {
+            margin: 0 4rem 0 0;
+            padding: 0;
+
+            > svg {
+                margin: 0;
+                height: 4rem;
+            }
         }
     }
 
@@ -56,11 +63,21 @@
 </style>
 
 <script>
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import Logo from './logo';
+import FA from './fa';
 
 export default {
     components: {
         Logo,
+        FA,
+    },
+    data() {
+        return {
+            icons: {
+                faExternalLinkAlt,
+            },
+        };
     },
 };
 </script>

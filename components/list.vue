@@ -41,7 +41,7 @@
     &::after {
         top: 2rem;
         height: 1.5rem;
-        background: $blue-dark;
+        background: $brand;
     }
 
     > div {
@@ -77,11 +77,11 @@
                 }
 
                 &.highlight {
-                    background: $blue-dark;
+                    background: $brand;
 
                     &:hover,
                     &:focus {
-                        background: rgba($blue-dark, .75);
+                        background: rgba($brand, .75);
                     }
                 }
             }

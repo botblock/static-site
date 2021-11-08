@@ -1,3 +1,7 @@
-$dark: #0d1113;
+$brand: saturate(#359DC4, 10%);
+$brand-dark: darken($brand, 20%);
+$brand2: #4FC0E9;
+$brand3: #D56FAC;
+$brand4: #967ADC;
 $light: #fff;
-$blue-dark: #359DC4;
+$dark: darken(saturate($brand, 25%), 47.5%);

@@ -28,6 +28,8 @@
     "sass-loader": "^10.2.0"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "modern-normalize": "^1.1.0"
   }
 }
