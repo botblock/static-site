@@ -57,10 +57,11 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 1rem 0 .5rem;
+        flex-wrap: wrap;
+        padding: .5rem 0 0;
 
         a {
-            margin: 0 .25rem;
+            margin: .5rem .25rem;
             padding: .25rem .5rem;
             text-decoration: none;
             text-transform: uppercase;
@@ -93,6 +94,7 @@
         div {
             display: flex;
             align-items: center;
+            flex-wrap: wrap;
         }
     }
 }

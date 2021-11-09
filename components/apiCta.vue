@@ -37,6 +37,11 @@ $triangle-height: 5rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
+        flex-wrap: wrap;
+
+        @media (min-width: $tablet) {
+            flex-wrap: nowrap;
+        }
 
         div {
             margin: 0 2rem 0 0;
@@ -69,6 +74,7 @@ $triangle-height: 5rem;
         a {
             padding: .5rem 1.25rem;
             margin: 1rem;
+            display: inline-block;
             border-radius: 1.75rem;
             background: $dark;
             color: $light;

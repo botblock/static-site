@@ -82,7 +82,7 @@
         .list {
             flex-basis: 100%;
 
-            @media (min-width: 550px) {
+            @media (min-width: $tablet) {
                 flex-basis: 50%;
             }
         }
@@ -105,6 +105,7 @@
         a {
             padding: .25rem .75rem;
             margin: .25rem;
+            display: inline-block;
             border-radius: 1rem;
             background: rgba($light, .1);
             color: rgba($light, .75);
@@ -154,6 +155,7 @@ $triangle-height: 5rem;
         a {
             padding: .25rem 1rem;
             margin: 1rem;
+            display: inline-block;
             border-radius: 1.5rem;
             background: $dark;
             color: $light;

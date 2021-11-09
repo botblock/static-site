@@ -3,6 +3,7 @@
 @mixin _triangleBase($selector) {
     position: relative;
     z-index: 1;
+    overflow-x: clip;
 
     &::#{$selector} {
         content: '';
@@ -20,7 +21,7 @@
     @include _triangleBase('before') {
         right: 0;
         top: -$height;
-        border-width: 0 0 $height calc(100vw - 1rem);
+        border-width: 0 0 $height 100vw;
         border-color: transparent transparent $brand transparent;
     }
 }
@@ -29,7 +30,7 @@
     @include _triangleBase('after') {
         left: 0;
         bottom: -$height;
-        border-width: $height calc(100vw - 1rem) 0 0;
+        border-width: $height 100vw 0 0;
         border-color: $brand transparent transparent;
     }
 }

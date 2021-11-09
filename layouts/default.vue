@@ -16,6 +16,7 @@ body {
     font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     font-weight: 300;
     line-height: 1.6;
+    font-size: 1em;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -29,7 +30,7 @@ h1 {
     line-height: 1.2;
     letter-spacing: -.1rem;
 
-    @media (min-width: 550px) {
+    @media (min-width: $tablet) {
         font-size: 5.0rem;
     }
 }
@@ -39,7 +40,7 @@ h2 {
     line-height: 1.25;
     letter-spacing: -.1rem;
 
-    @media (min-width: 550px) {
+    @media (min-width: $tablet) {
         font-size: 4.2rem;
     }
 }
@@ -49,7 +50,7 @@ h3 {
     line-height: 1.3;
     letter-spacing: -.1rem;
 
-    @media (min-width: 550px) {
+    @media (min-width: $tablet) {
         font-size: 3.6rem;
     }
 }
@@ -59,7 +60,7 @@ h4 {
     line-height: 1.35;
     letter-spacing: -.08rem;
 
-    @media (min-width: 550px) {
+    @media (min-width: $tablet) {
         font-size: 3.0rem;
     }
 }
@@ -69,7 +70,7 @@ h5 {
     line-height: 1.5;
     letter-spacing: -.05rem;
 
-    @media (min-width: 550px) {
+    @media (min-width: $tablet) {
         font-size: 2.4rem;
     }
 }
@@ -86,14 +87,14 @@ p {
 
 .container {
     max-width: 1280px;
-    width: 100%;
+    width: calc(100% - 2rem);
     margin: 0 auto;
 
-    @media (min-width: 400px) {
+    @media (min-width: $mobile) {
         width: 85%;
     }
 
-    @media (min-width: 550px) {
+    @media (min-width: $tablet) {
         width: 80%;
     }
 }

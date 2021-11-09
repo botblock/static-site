@@ -9,7 +9,7 @@
                 </div>
                 <div class="glow">
                     <h2>{{ listCount }} Bot Lists</h2>
-                    <p>With {{ apiCount }} supporting API guild count integration</p>
+                    <p>({{ apiCount }} lists supporting API guild count integration)</p>
                 </div>
             </div>
         </div>
@@ -36,9 +36,16 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 5rem 0;
+        flex-wrap: wrap;
+        padding: 0 0 1rem;
+
+        @media (min-width: $tablet) {
+            padding: 4rem 0 1rem;
+        }
 
         .headline {
+            margin: 1rem 0 4rem;
+
             h1 {
                 margin: 0 0 .5rem;
 
@@ -55,6 +62,7 @@
                 line-height: 1.25;
                 font-weight: 600;
                 padding: 0 0 0 1.5rem;
+                margin: 0;
 
                 &::before {
                     content: '';
@@ -69,6 +77,9 @@
         }
 
         .glow {
+            margin: 1rem 0 4rem;
+            text-align: center;
+
             h2,
             p {
                 position: relative;
@@ -85,28 +96,34 @@
                     0 0 16rem $brand,
                     0 0 32rem $brand;
 
-                &::before,
-                &::after {
-                    content: '';
-                    display: block;
-                    position: absolute;
-                    width: 100%;
-                    height: .25rem;
-                    background: lighten(desaturate($dark, 100%), 7.5%);
-                    z-index: -1;
+                @media (min-width: $tablet) {
+                    &::before,
+                    &::after {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        width: 100%;
+                        height: .25rem;
+                        background: lighten(desaturate($dark, 100%), 7.5%);
+                        z-index: -1;
+                    }
                 }
             }
 
             h2 {
-                font-size: 6rem;
+                font-size: 4rem;
                 margin: 0 0 1rem;
+
+                @media (min-width: $tablet) {
+                    font-size: 6rem;
+                }
 
                 &::before {
                     top: 3rem;
                 }
 
                 &::after {
-                    bottom: 3rem;
+                    bottom: 2.5rem;
                 }
             }
 
@@ -140,7 +157,7 @@
         .list {
             flex-basis: 100%;
 
-            @media (min-width: 550px) {
+            @media (min-width: $tablet) {
                 flex-basis: 50%;
             }
         }

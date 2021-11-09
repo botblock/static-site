@@ -7,6 +7,12 @@ const jsonData = dir => fs.readdirSync(path.join(__dirname, 'data', 'data', dir)
 
 module.exports = {
     target: 'static',
+    head: {
+        meta: [
+            { charset: 'utf-8' },
+            { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        ],
+    },
     css: [ 'modern-normalize' ],
     buildModules: [ 'nuxt-resolve-url-loader' ],
     generate: {

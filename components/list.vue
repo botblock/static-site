@@ -18,10 +18,11 @@
 
 .list {
     position: relative;
-    padding: 1.5rem 2rem;
+    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 
     &::before,
     &::after {
@@ -45,7 +46,7 @@
     }
 
     > div {
-        margin: 0 1rem 0 0;
+        margin: 0 1rem .5rem 0;
 
         h3 {
             font-size: 1.5rem;
@@ -64,6 +65,7 @@
             a {
                 padding: .25rem .75rem;
                 margin: .25rem;
+                display: inline-block;
                 border-radius: 1rem;
                 background: rgba($light, .1);
                 color: $light;

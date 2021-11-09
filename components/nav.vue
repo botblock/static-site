@@ -24,6 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     padding: 1rem 0;
 
     &.dark {
@@ -38,11 +39,15 @@
     }
 
     a {
-        margin: 0 1rem;
+        margin: 0 .25rem;
         padding: .25rem .5rem;
         text-decoration: none;
         color: $light;
         font-weight: 500;
+
+        @media (min-width: $tablet) {
+            margin: 0 1rem;
+        }
 
         &:hover,
         &:focus {
@@ -56,8 +61,11 @@
         }
 
         &.logo {
-            margin: 0 4rem 0 0;
             padding: 0;
+
+            @media (min-width: $tablet) {
+                margin: 0 4rem 0 0;
+            }
 
             > svg {
                 margin: 0;
@@ -69,6 +77,7 @@
     div {
         display: flex;
         align-items: center;
+        flex-wrap: wrap;
     }
 }
 </style>
