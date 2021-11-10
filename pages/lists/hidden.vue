@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Lists :lists="lists" title="Defunct Lists" subtitle="Lists tracked by BotBlock that are no longer functioning" />
+        <Lists :lists="lists" title="Hidden Lists" subtitle="View information for each list to see why they're hidden" />
         <div class="all">
             <div class="container">
                 <p>Looking for the active bot lists?</p>
@@ -70,7 +70,7 @@ import Footer from '../../components/footer';
 import FA from '../../components/fa';
 
 const lists = getLists()
-    .filter(list => list.defunct && list.display)
+    .filter(list => !list.display)
     .map(list => getList(list.id));
 
 export default {

@@ -1,23 +1,6 @@
 <template>
     <div>
-        <div class="hero">
-            <Nav dark />
-            <div class="container">
-                <h1>Bot Lists</h1>
-                <p>All active bot lists tracked by BotBlock</p>
-            </div>
-        </div>
-        <div class="lists">
-            <div class="container">
-                <List :list="list" :key="list.id" v-for="list in listsOne"/>
-            </div>
-        </div>
-        <ApiCta />
-        <div class="lists">
-            <div class="container">
-                <List :list="list" :key="list.id" v-for="list in listsTwo"/>
-            </div>
-        </div>
+        <Lists :lists="lists" title="Bot Lists" subtitle="All active bot lists tracked by BotBlock" />
         <div class="others">
             <div class="container">
                 <p>{{ defunctCount }} lists are marked as defunct and not shown here.</p>
@@ -41,53 +24,6 @@
 <style scoped lang="scss">
 @import '../../scss/globals';
 @import '../../scss/mixins';
-
-.hero {
-    background: $brand;
-    color: $dark;
-    margin: 0 0 2rem;
-
-    .container {
-        padding: 2rem 0;
-
-        h1 {
-            margin: 0 0 .5rem;
-        }
-
-        p {
-            position: relative;
-            font-size: 1.25rem;
-            line-height: 1.25;
-            font-weight: 600;
-            padding: 0 0 0 1.5rem;
-
-            &::before {
-                content: '';
-                display: block;
-                position: absolute;
-                height: 100%;
-                width: .125rem;
-                background: rgba($dark, .25);
-                left: .5rem;
-            }
-        }
-    }
-}
-
-.lists {
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-
-        .list {
-            flex-basis: 100%;
-
-            @media (min-width: $tablet) {
-                flex-basis: 50%;
-            }
-        }
-    }
-}
 
 .others {
     margin: 1rem 0;
@@ -180,9 +116,7 @@ $triangle-height: 5rem;
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import getLists from '../../util/getLists';
 import getList from '../../util/getList';
-import Nav from '../../components/nav';
-import ApiCta from '../../components/apiCta';
-import List from '../../components/list';
+import Lists from '../../components/lists';
 import Footer from '../../components/footer';
 import FA from '../../components/fa';
 
@@ -192,16 +126,13 @@ const lists = getLists()
 
 export default {
     components: {
-        Nav,
-        ApiCta,
-        List,
+        Lists,
         Footer,
         FA,
     },
     data() {
         return {
-            listsOne: lists.slice(0, Math.ceil(lists.length / 2)),
-            listsTwo: lists.slice(Math.ceil(lists.length / 2)),
+            lists,
             defunctCount: getLists().filter(list => list.defunct && list.display).length,
             hiddenCount: getLists().filter(list => !list.display).length,
             icons: {
