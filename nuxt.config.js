@@ -22,4 +22,13 @@ module.exports = {
             ...jsonData('features').map(feature => `/features/${feature}`),
         ],
     },
+    build: {
+        extend(config) {
+            config.module.rules.push({
+                test: /\.ya?ml$/,
+                type: 'json',
+                use: 'yaml-loader',
+            });
+        },
+    },
 };
