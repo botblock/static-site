@@ -4,7 +4,7 @@
             <code v-if="prop">
                 {{ prop }}
             </code>
-            <code v-if="data.type || !data.oneOf" class="type">
+            <code v-if="data.type || (!data.oneOf && !data.allOf)" class="type">
                 {{ data.type || 'Any' }}<span v-if="data.format">&lt;{{ data.format }}&gt;</span>
             </code>
         </div>
@@ -31,6 +31,13 @@
                 <p>One of:</p>
             </div>
             <RouteSchema :data="item" prop="-" v-for="(item, idx) in data.oneOf" :key="idx" />
+        </template>
+
+        <template v-if="data.allOf">
+            <div class="info">
+                <p>All of:</p>
+            </div>
+            <RouteSchema :data="item" prop="-" v-for="(item, idx) in data.allOf" :key="idx" />
         </template>
     </div>
 </template>

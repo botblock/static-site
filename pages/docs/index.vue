@@ -1,9 +1,14 @@
 <template>
     <div>
         <Hero />
-        <div class="container route" v-for="(data, route) in routes" :key="route">
-            <Route :route="route" :data="data" />
+        <div class="container">
+            <Route :route="routes[0][0]" :data="routes[0][1]" class="route" />
         </div>
+        <ApiCta /> <!-- TODO: replace with libraries CTA -->
+        <div class="container">
+            <Route :route="route" :data="data" class="route" v-for="([ route, data ]) in routes.slice(1)" :key="route" />
+        </div>
+        <Footer class="footer" />
     </div>
 </template>
 
@@ -12,12 +17,14 @@
 
 .route {
     &:not(:last-child) {
-        > div {
-            padding: 0 0 2rem;
-            margin: 0 0 2rem;
-            border-bottom: 1px solid $brand;
-        }
+        padding: 0 0 2rem;
+        margin: 0 0 2rem;
+        border-bottom: 1px solid $brand;
     }
+}
+
+.footer {
+    margin: 2rem 0 0;
 }
 </style>
 
@@ -25,6 +32,8 @@
 import spec from '../../data/openapi.yml';
 import Hero from '../../components/docs/hero';
 import Route from '../../components/docs/route';
+import Footer from '../../components/footer';
+import ApiCta from "../../components/apiCta";
 
 // Flatten route & method
 const routes = Object.keys(spec.paths).reduce((obj, path) => ({
@@ -35,6 +44,8 @@ const routes = Object.keys(spec.paths).reduce((obj, path) => ({
     }), {}),
 }), {});
 
+// Recursively replace any use of $ref with the source data
+// Does not follow the OpenAPI spec for where $ref can be used
 const deref = (object, source) => {
     if (!object) return object;
 
@@ -65,12 +76,14 @@ const deref = (object, source) => {
 
 export default {
     components: {
+        ApiCta,
         Hero,
         Route,
+        Footer,
     },
     data() {
         return {
-            routes: deref(routes, spec),
+            routes: Object.entries(deref(routes, spec)),
         };
     },
 };
