@@ -65,7 +65,7 @@
             padding: .25rem .5rem;
             text-decoration: none;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: $weight-bold;
             font-size: .9rem;
             letter-spacing: .1px;
             color: $dark;

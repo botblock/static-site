@@ -13,16 +13,20 @@ html,
 body {
     background: $dark;
     color: $light;
-    font-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-weight: 300;
+    font-family: $font-sans-serif;
+    font-weight: $weight-default;
     line-height: 1.6;
     font-size: 1em;
+}
+
+code {
+    font-family: $font-mono;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 2rem;
-    font-weight: 300;
+    font-weight: $weight-default;
 }
 
 h1 {

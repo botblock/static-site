@@ -48,7 +48,7 @@ $triangle-height: 5rem;
 
             h2 {
                 font-size: 3rem;
-                font-weight: 600;
+                font-weight: $weight-bold;
                 margin: .25rem 0 1rem;
             }
 
@@ -59,7 +59,7 @@ $triangle-height: 5rem;
 
                 b {
                     font-size: 1rem;
-                    font-weight: 600;
+                    font-weight: $weight-bold;
                     letter-spacing: .1px;
                     margin: 0 0 .5rem;
                     padding: .25rem .75rem;

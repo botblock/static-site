@@ -41,7 +41,7 @@
             position: relative;
             font-size: 1.25rem;
             line-height: 1.25;
-            font-weight: 600;
+            font-weight: $weight-bold;
             padding: 0 0 0 1.5rem;
 
             &::before {

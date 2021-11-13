@@ -43,7 +43,7 @@
         padding: .25rem .5rem;
         text-decoration: none;
         color: $light;
-        font-weight: 500;
+        font-weight: $weight-bold;
 
         @media (min-width: $tablet) {
             margin: 0 1rem;

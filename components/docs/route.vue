@@ -1,19 +1,21 @@
 <template>
-    <div class="container">
+    <div class="route" :id="sluggify(route)">
         <div class="heading">
             <h2>{{ data.summary }}</h2>
             <p>{{ route }}</p>
         </div>
 
-        <div v-html="render(data.description)" v-if="data.description" />
+        <div class="description" v-html="render(data.description)" v-if="data.description" />
 
-        <h3>
-            Request body
-            <small v-if="data.requestBody.required">(required)</small>
-        </h3>
-        <div class="request-body" v-for="(body, type) in data.requestBody.content" :key="type">
-            <RouteContent :type="type" :data="body" />
-        </div>
+        <template v-if="data.requestBody">
+            <h3>
+                Request body
+                <small v-if="data.requestBody.required">(required)</small>
+            </h3>
+            <div class="request-body" v-for="(body, type) in data.requestBody.content" :key="type">
+                <RouteContent :type="type" :data="body" />
+            </div>
+        </template>
 
         <h3>Responses</h3>
         <div class="response" v-for="(response, status) in data.responses" :key="status">
@@ -22,16 +24,18 @@
                 <RouteContent :type="type" :data="body" level="h5" />
             </div>
 
-            <h5>Headers</h5>
-            <div v-for="(body, header) in response.headers" :key="header">
-                <div class="header">
-                    <code>{{ header }}</code>
-                    <code v-if="body.schema && body.schema.type">
-                        {{ body.schema.type }}<span v-if="body.schema.format">&lt;{{ body.schema.format }}&gt;</span>
-                    </code>
+            <template v-if="response.headers">
+                <h5>Headers</h5>
+                <div v-for="(body, header) in response.headers" :key="header">
+                    <div class="header">
+                        <code>{{ header }}</code>
+                        <code v-if="body.schema && body.schema.type">
+                            {{ body.schema.type }}<span v-if="body.schema.format">&lt;{{ body.schema.format }}&gt;</span>
+                        </code>
+                    </div>
+                    <div v-html="render(body.description)" v-if="body.description" />
                 </div>
-                <div v-html="render(body.description)" v-if="body.description" />
-            </div>
+            </template>
         </div>
     </div>
 </template>
@@ -39,40 +43,82 @@
 <style scoped lang="scss">
 @import '../../scss/globals';
 
-.heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 0 0 1rem;
+.route {
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 0 1rem;
 
-    h2 {
-        margin: 0;
+        h2 {
+            font-weight: $weight-bold;
+            font-size: 4rem;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1rem;
+            font-weight: $weight-bold;
+            font-family: $font-mono;
+            letter-spacing: .1px;
+            margin: 1rem;
+            padding: .25rem .75rem;
+            border-radius: 1rem;
+            background: rgba($brand, .75);
+            color: $light;
+            display: inline-block;
+        }
     }
 
-    p {
-        font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: .1px;
-        margin: 1rem;
-        padding: .25rem .75rem;
-        border-radius: 1rem;
-        background: rgba($brand, .75);
-        color: $light;
-        display: inline-block;
+    .description::v-deep {
+        p {
+            &:last-child {
+                margin: 0;
+            }
+        }
     }
-}
 
-.header {
-    display: flex;
-    margin: 0 -.25rem;
+    h3 {
+        font-size: 2rem;
+        margin: 2rem 0 1rem;
 
-    > code {
-        font-family: monospace;
-        font-size: 1rem;
-        margin: 0 .25rem;
+        small {
+            font-size: 1rem;
+            vertical-align: middle;
+        }
+    }
 
-        &:nth-child(2) {
-            color: $brand;
+    .response {
+        h4 {
+            font-size: 1.75rem;
+            font-weight: $weight-bold;
+            font-family: $font-mono;
+            letter-spacing: .1px;
+            margin: 1rem 0;
+            padding: .125rem 1rem;
+            border-radius: 2rem;
+            background: rgba($brand, .75);
+            color: $light;
+            display: inline-block;
+        }
+
+        h5 {
+            font-size: 1.75rem;
+            margin: 1rem 0 0.25rem;
+        }
+
+        .header {
+            display: flex;
+            margin: 0 -.25rem;
+
+            > code {
+                font-size: 1rem;
+                margin: 0 .25rem;
+
+                &:nth-child(2) {
+                    color: $brand;
+                }
+            }
         }
     }
 }
@@ -81,7 +127,7 @@
 <script>
 import MarkdownIt from 'markdown-it';
 import RouteContent from './route-content';
-import RouteJsdoc from "./route-jsdoc";
+import RouteSchema from './route-schema';
 
 const md = MarkdownIt({
     html: true,
@@ -91,8 +137,8 @@ const md = MarkdownIt({
 
 export default {
     components: {
-        RouteJsdoc,
         RouteContent,
+        RouteSchema,
     },
     props: {
         data: {
@@ -102,11 +148,14 @@ export default {
         route: {
             type: String,
             required: true
-        }
+        },
     },
     methods: {
         render(text) {
             return md.render(text);
+        },
+        sluggify(text) {
+            return `${text}`.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-{2,}/g, '-').replace(/^-|-$/g, '');
         },
     },
 };

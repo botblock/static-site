@@ -1,9 +1,25 @@
 <template>
     <div>
         <Hero />
-        <Route v-for="(data, route) in routes" :key="sluggify(route)" :id="sluggify(route)" :route="route" :data="data" />
+        <div class="container route" v-for="(data, route) in routes" :key="route">
+            <Route :route="route" :data="data" />
+        </div>
     </div>
 </template>
+
+<style scoped lang="scss">
+@import '../../scss/globals';
+
+.route {
+    &:not(:last-child) {
+        > div {
+            padding: 0 0 2rem;
+            margin: 0 0 2rem;
+            border-bottom: 1px solid $brand;
+        }
+    }
+}
+</style>
 
 <script>
 import spec from '../../data/openapi.yml';
@@ -19,6 +35,34 @@ const routes = Object.keys(spec.paths).reduce((obj, path) => ({
     }), {}),
 }), {});
 
+const deref = (object, source) => {
+    if (!object) return object;
+
+    if (Array.isArray(object)) {
+        return object.map(item => deref(item, source));
+    }
+
+    if (object.$ref) {
+        try {
+            const refParts = object.$ref.split('/').slice(1);
+            let ref = source;
+            while (refParts.length) ref = ref[refParts.shift()];
+            return deref(ref, source);
+        } catch (_) {
+            // Ignore
+        }
+    }
+
+    if (typeof object === 'object') {
+        return Object.keys(object).reduce((obj, key) => ({
+            ...obj,
+            [key]: deref(object[key], source),
+        }), {});
+    }
+
+    return object;
+};
+
 export default {
     components: {
         Hero,
@@ -26,13 +70,8 @@ export default {
     },
     data() {
         return {
-            routes,
+            routes: deref(routes, spec),
         };
-    },
-    methods: {
-        sluggify(string) {
-            return `${string}`.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-{2,}/g, '-').replace(/^-|-$/g, '');
-        }
     },
 };
 </script>

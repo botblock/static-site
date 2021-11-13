@@ -47,7 +47,6 @@
             color: rgba($light, .75);
             text-decoration: none;
             font-size: 1rem;
-            font-weight: 400;
 
             &:hover,
             &:focus {

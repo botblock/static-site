@@ -1,35 +1,36 @@
 <template>
-    <div class="jsdoc">
+    <div class="schema">
         <div class="prop">
-            <code>
+            <code v-if="prop">
                 {{ prop }}
             </code>
-            <code v-if="data.type">
-                {{ data.type }}<span v-if="data.format">&lt;{{ data.format }}&gt;</span>
+            <code v-if="data.type || !data.oneOf" class="type">
+                {{ data.type || 'Any' }}<span v-if="data.format">&lt;{{ data.format }}&gt;</span>
             </code>
         </div>
 
         <div class="desc" v-if="data.description" v-html="render(data.description)" />
 
         <div class="info">
+            <p v-if="data.enum">[ {{ data.enum.join(', ') }} ]</p>
             <p v-if="'minItems' in data">Min items: {{ data.minItems }}</p>
             <p v-if="'maxItems' in data">Max items: {{ data.maxItems }}</p>
         </div>
 
         <template v-if="data.type === 'object'">
-            <RouteJsdoc :data="item" :prop="key" v-for="(item, key) in data.properties" :key="key" v-if="data.properties" />
-            <RouteJsdoc :data="data.additionalProperties" prop="<*>" v-if="data.additionalProperties" />
+            <RouteSchema :data="item" :prop="key" v-for="(item, key) in data.properties" :key="key" v-if="data.properties" />
+            <RouteSchema :data="data.additionalProperties" prop="<*>" v-if="data.additionalProperties" />
         </template>
 
         <template v-if="data.type === 'array'">
-            <RouteJsdoc :data="data.items" prop="[*]" v-if="data.items" />
+            <RouteSchema :data="data.items" prop="[*]" v-if="data.items" />
         </template>
 
         <template v-if="data.oneOf">
             <div class="info">
                 <p>One of:</p>
             </div>
-            <RouteJsdoc :data="item" prop="-" v-for="(item, idx) in data.oneOf" :key="idx" />
+            <RouteSchema :data="item" prop="-" v-for="(item, idx) in data.oneOf" :key="idx" />
         </template>
     </div>
 </template>
@@ -37,7 +38,7 @@
 <style scoped lang="scss">
 @import '../../scss/globals';
 
-.jsdoc {
+.schema {
     margin: .25rem 0 .25rem 1rem;
 
     .prop {
@@ -45,11 +46,10 @@
         margin: 0 -.25rem;
 
         > code {
-            font-family: monospace;
             font-size: 1rem;
             margin: 0 .25rem;
 
-            &:nth-child(2) {
+            &.type {
                 color: $brand;
             }
         }
@@ -86,7 +86,7 @@ const md = MarkdownIt({
 });
 
 export default {
-    name: 'RouteJsdoc',
+    name: 'RouteSchema',
     props: {
         prop: {
             type: String,
