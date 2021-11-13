@@ -4,7 +4,7 @@
         <div class="container">
             <Route :route="routes[0][0]" :data="routes[0][1]" class="route" />
         </div>
-        <ApiCta /> <!-- TODO: replace with libraries CTA -->
+        <LibsCta />
         <div class="container">
             <Route :route="route" :data="data" class="route" v-for="([ route, data ]) in routes.slice(1)" :key="route" />
         </div>
@@ -16,9 +16,10 @@
 @import '../../scss/globals';
 
 .route {
+    padding: 1rem 0;
+
     &:not(:last-child) {
-        padding: 0 0 2rem;
-        margin: 0 0 2rem;
+        margin: 0 0 1rem;
         border-bottom: 1px solid $brand;
     }
 }
@@ -33,7 +34,7 @@ import spec from '../../data/openapi.yml';
 import Hero from '../../components/docs/hero';
 import Route from '../../components/docs/route';
 import Footer from '../../components/footer';
-import ApiCta from "../../components/apiCta";
+import LibsCta from '../../components/libsCta';
 
 // Flatten route & method
 const routes = Object.keys(spec.paths).reduce((obj, path) => ({
@@ -76,7 +77,7 @@ const deref = (object, source) => {
 
 export default {
     components: {
-        ApiCta,
+        LibsCta,
         Hero,
         Route,
         Footer,

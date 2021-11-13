@@ -14,14 +14,14 @@
                 <NuxtLink to="/lists">
                     Lists
                 </NuxtLink>
-                <NuxtLink to="/search">
-                    Search
-                </NuxtLink>
                 <NuxtLink to="/features">
                     Features
                 </NuxtLink>
                 <NuxtLink to="/docs">
-                    API Docs
+                    API Documentation
+                </NuxtLink>
+                <NuxtLink to="/docs/libs">
+                    API Libraries
                 </NuxtLink>
             </div>
 

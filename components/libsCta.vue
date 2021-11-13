@@ -2,17 +2,14 @@
     <div class="cta">
         <div class="container">
             <div>
-                <p><b>BotBlock API</b></p>
-                <h2>Simplify sending your bot's guild count with the BotBlock API.</h2>
+                <p><b>API Libraries</b></p>
+                <h2>Interact with the BotBlock API through libraries built for Discord bots.</h2>
                 <p>
-                    Using the BotBlock API allows you to make one POST call to send your bot's guild count to all
-                    the bot lists we support.
-
-                    Or, use the BotBlock API to get data about all the lists we track and build your own custom
-                    automations directly.
+                    Save time and get started with the BotBlock API faster by using one of our pre-built libraries,
+                    designed with Discord bots in mind.
                 </p>
             </div>
-            <NuxtLink to="/docs">Read the docs <FA :icon="icons.faAngleRight" /></NuxtLink>
+            <NuxtLink to="/docs/libs">Explore libraries <FA :icon="icons.faAngleRight" /></NuxtLink>
         </div>
     </div>
 </template>

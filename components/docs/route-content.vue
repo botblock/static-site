@@ -37,12 +37,18 @@
 
     > div {
         display: flex;
+        flex-wrap: wrap;
         margin: 0 -.5rem;
 
         > div {
-            flex-basis: 50%;
-            width: 50%;
+            flex-basis: calc(100% - 1rem);
+            width: calc(100% - 1rem);
             margin: 0 .5rem;
+
+            @media (min-width: $tablet) {
+                flex-basis: calc(50% - 1rem);
+                width: calc(50% - 1rem);
+            }
 
             h4,
             h5 {
