@@ -9,13 +9,14 @@
             </code>
         </div>
 
-        <div class="desc" v-if="data.description" v-html="render(data.description)" />
-
         <div class="info">
+            <p v-if="data.nullable">Nullable: true</p>
             <p v-if="data.enum">[ {{ data.enum.join(', ') }} ]</p>
             <p v-if="'minItems' in data">Min items: {{ data.minItems }}</p>
             <p v-if="'maxItems' in data">Max items: {{ data.maxItems }}</p>
         </div>
+
+        <div class="desc" v-if="data.description" v-html="render(data.description)" />
 
         <template v-if="data.type === 'object'">
             <RouteSchema :data="item" :prop="key" v-for="(item, key) in data.properties" :key="key" v-if="data.properties" />
@@ -62,21 +63,25 @@
         }
     }
 
-    .desc::v-deep {
-        color: rgba($light, .85);
-
-        p {
-            margin: 0 0 .5rem;
-            line-height: 1.25;
-        }
-    }
-
     .info {
         font-size: .9rem;
         color: rgba($light, .75);
 
         p {
             margin: 0;
+            line-height: 1.25;
+
+            &:last-child {
+                margin: 0 0 .5rem;
+            }
+        }
+    }
+
+    .desc::v-deep {
+        color: rgba($light, .85);
+
+        p {
+            margin: 0 0 .5rem;
             line-height: 1.25;
         }
     }
