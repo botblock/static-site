@@ -192,7 +192,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import getLists from '../util/getLists';
 import getList from '../util/getList';
 import Nav from '../components/nav';
-import ApiCta from '../components/apiCta';
+import ApiCta from '../components/cta/apiCta';
 import List from '../components/list';
 import Footer from '../components/footer';
 import FA from '../components/fa';

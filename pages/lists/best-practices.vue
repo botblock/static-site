@@ -1,3 +1,3 @@
 <template>
-    <h2>Best practices</h2>
+    <h2>TODO: Best practices</h2>
 </template>

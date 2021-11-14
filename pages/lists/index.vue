@@ -11,12 +11,9 @@
                 <NuxtLink to="/lists/hidden">View hidden lists <FA :icon="icons.faAngleRight" /></NuxtLink>
             </div>
         </div>
-        <div class="submit">
-            <div class="container">
-                <p>Are we missing a list? Let us know what lists to track on GitHub.</p>
-                <NuxtLink to="/submit">Submit a list <FA :icon="icons.faAngleRight" /></NuxtLink>
-            </div>
-        </div>
+        <ListsFooter text="Are we missing a list? Let us know what lists to track on GitHub."
+                     button="Submit a list"
+                     link="/submit" />
         <Footer />
     </div>
 </template>
@@ -64,51 +61,6 @@
         }
     }
 }
-
-$triangle-height: 5rem;
-
-.submit {
-    @include triangleBefore($triangle-height);
-
-    margin: $triangle-height 0 -1rem;
-    padding: 0 0 1rem;
-    background: $brand;
-
-    .container {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
-        padding: 1rem 0;
-
-        p {
-            margin: 0 1rem;
-            font-size: 1.5rem;
-            color: $dark;
-        }
-
-        a {
-            padding: .25rem 1rem;
-            margin: 1rem;
-            display: inline-block;
-            border-radius: 1.5rem;
-            background: $dark;
-            color: $light;
-            text-decoration: none;
-            font-size: 1.25rem;
-            white-space: nowrap;
-
-            &:hover,
-            &:focus {
-                background: rgba($dark, .75);
-            }
-
-            > svg {
-                margin: 0 0 0 .5rem;
-            }
-        }
-    }
-}
 </style>
 
 <script>
@@ -116,22 +68,20 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import getLists from '../../util/getLists';
 import getList from '../../util/getList';
 import Lists from '../../components/lists';
+import ListsFooter from '../../components/cta/footerCta';
 import Footer from '../../components/footer';
 import FA from '../../components/fa';
-
-const lists = getLists()
-    .filter(list => !list.defunct && list.display)
-    .map(list => getList(list.id));
 
 export default {
     components: {
         Lists,
+        ListsFooter,
         Footer,
         FA,
     },
     data() {
         return {
-            lists,
+            lists: getLists().filter(list => !list.defunct && list.display).map(list => getList(list.id)),
             defunctCount: getLists().filter(list => list.defunct && list.display).length,
             hiddenCount: getLists().filter(list => !list.display).length,
             icons: {

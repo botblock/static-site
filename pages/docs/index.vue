@@ -34,7 +34,7 @@ import spec from '../../data/openapi.yml';
 import Hero from '../../components/docs/hero';
 import Route from '../../components/docs/route';
 import Footer from '../../components/footer';
-import LibsCta from '../../components/libsCta';
+import LibsCta from '../../components/cta/libsCta';
 
 // Flatten route & method
 const routes = Object.keys(spec.paths).reduce((obj, path) => ({

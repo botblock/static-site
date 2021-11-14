@@ -15,8 +15,8 @@
 </template>
 
 <style scoped lang="scss">
-@import '../scss/globals';
-@import '../scss/mixins';
+@import '../../scss/globals';
+@import '../../scss/mixins';
 
 $triangle-height: 5rem;
 
@@ -92,7 +92,7 @@ $triangle-height: 5rem;
 
 <script>
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import FA from './fa';
+import FA from '../fa';
 
 export default {
     components: {

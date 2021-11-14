@@ -76,7 +76,7 @@
 <script>
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import Nav from './nav';
-import ApiCta from './apiCta';
+import ApiCta from './cta/apiCta';
 import List from './list';
 import Footer from './footer';
 import FA from './fa';
@@ -104,14 +104,20 @@ export default {
         }
     },
     computed: {
+        listsSorted() {
+            return this.lists.sort((a, b) => {
+                if (a.discord_only !== b.discord_only) return a.discord_only ? -1 : 1;
+                return a.id.localeCompare(b.id) > 0 ? 1 : -1;
+            });
+        },
         listsHalf() {
             return Math.ceil(this.lists.length / 4) * 2;
         },
         listsOne() {
-            return this.lists.slice(0, this.listsHalf);
+            return this.listsSorted.slice(0, this.listsHalf);
         },
         listsTwo() {
-            return this.lists.slice(this.listsHalf);
+            return this.listsSorted.slice(this.listsHalf);
         },
         showCta() {
             return this.lists.length >= 8;

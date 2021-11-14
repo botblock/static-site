@@ -111,7 +111,7 @@
 </style>
 
 <script>
-import RouteSchema from './route-schema';
+import RouteSchema from './routeSchema';
 
 export default {
     components: {

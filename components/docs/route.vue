@@ -213,8 +213,8 @@
 import MarkdownIt from 'markdown-it';
 import { faLink, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import FA from '../fa';
-import RouteContent from './route-content';
-import RouteSchema from './route-schema';
+import RouteContent from './routeContent';
+import RouteSchema from './routeSchema';
 
 const md = MarkdownIt({
     html: true,
