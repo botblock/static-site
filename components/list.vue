@@ -4,9 +4,13 @@
             <h3>{{ list.id }}</h3>
             <p>{{ list.url }}</p>
             <div class="links">
-                <NuxtLink :to="`/lists/${list.id}`" class="highlight">Information</NuxtLink>
-                <a :href="list.url">Website</a>
+                <NuxtLink :to="`/lists/${list.id}`" class="highlight" v-if="!hideInformationLink">Information</NuxtLink>
+                <a :href="list.url" :class="{ highlight: hideInformationLink }">Website</a>
                 <a :href="list.discord" v-if="list.discord">Discord</a>
+            </div>
+            <div :class="{ feature: true, active: hasFeature }">
+                <div><FA :icon="hasFeature ? icons.faCheck : icons.faMinus" /></div>
+                <p>{{ featureText }}</p>
             </div>
         </div>
         <img :src="list.icon" loading="lazy" alt="" />
@@ -40,8 +44,8 @@
     }
 
     &::after {
-        top: 2rem;
-        height: 1.5rem;
+        top: 1.25rem;
+        height: 1.75rem;
         background: $brand;
     }
 
@@ -87,6 +91,46 @@
                 }
             }
         }
+
+        .feature {
+            display: flex;
+            align-items: center;
+
+            &.active {
+                > div {
+                    svg {
+                        color: $brand;
+                    }
+                }
+
+                p {
+                    color: rgba($light, .8);
+                }
+            }
+
+            > div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: rgba($light, .1);
+                width: 1.75rem;
+                height: 1.75rem;
+                padding: .25rem;
+                margin: .5rem;
+                border-radius: .25rem;
+
+                svg {
+                    height: auto;
+                    width: 100%;
+                    color: rgba($light, .5);
+                }
+            }
+
+            p {
+                color: rgba($light, .4);
+                margin: 0 .25rem;
+            }
+        }
     }
 
     img {
@@ -100,11 +144,37 @@
 </style>
 
 <script>
+import { faCheck, faMinus } from '@fortawesome/free-solid-svg-icons';
+import FA from './fa';
+
 export default {
+    components: {
+        FA,
+    },
     props: {
         list: {
             type: Object,
             required: true,
+        },
+        hideInformationLink: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    data() {
+        return {
+            icons: {
+                faCheck,
+                faMinus,
+            },
+        };
+    },
+    computed: {
+        hasFeature() {
+            return !!this.list.api_post;
+        },
+        featureText() {
+            return this.hasFeature ? 'Works with BotBlock guild count API' : 'No support for BotBlock guild count API';
         },
     },
 };
