@@ -34,6 +34,8 @@
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "fontsource-megrim": "^4.0.0",
     "markdown-it": "^12.2.0",
-    "modern-normalize": "^1.1.0"
+    "modern-normalize": "^1.1.0",
+    "prismjs": "^1.25.0",
+    "vue-prism-component": "^1.2.0"
   }
 }

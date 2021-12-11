@@ -215,6 +215,7 @@ import { faLink, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
 import FA from '../fa';
 import RouteContent from './routeContent';
 import RouteSchema from './routeSchema';
+import sluggify from '../../util/sluggify';
 
 const md = MarkdownIt({
     html: true,
@@ -263,9 +264,7 @@ export default {
         render(text) {
             return md.render(text);
         },
-        sluggify(text) {
-            return `${text}`.toLowerCase().replace(/[^a-z0-9]/g, '-').replace(/-{2,}/g, '-').replace(/^-|-$/g, '');
-        },
+        sluggify,
     },
 };
 </script>

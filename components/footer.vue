@@ -20,7 +20,7 @@
                 <NuxtLink to="/docs">
                     API Documentation
                 </NuxtLink>
-                <NuxtLink to="/docs/libs">
+                <NuxtLink to="/docs/libraries">
                     API Libraries
                 </NuxtLink>
             </div>
