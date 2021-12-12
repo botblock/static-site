@@ -23,6 +23,9 @@
                 <NuxtLink to="/docs/libraries">
                     API Libraries
                 </NuxtLink>
+                <NuxtLink to="/lists/best-practices">
+                    Best Practices
+                </NuxtLink>
                 <NuxtLink to="/about">
                     About
                 </NuxtLink>
