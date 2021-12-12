@@ -94,8 +94,12 @@
 
         h2 {
             font-weight: $weight-bold;
-            font-size: 4rem;
+            font-size: 3rem;
             margin: 0 .5rem;
+
+            @media (min-width: $tablet) {
+                font-size: 4rem;
+            }
         }
 
         p {

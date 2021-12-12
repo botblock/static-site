@@ -61,9 +61,13 @@
 
         h2 {
             font-weight: $weight-bold;
-            font-size: 4rem;
+            font-size: 3rem;
             margin: 0 .5rem;
             overflow-wrap: anywhere;
+
+            @media (min-width: $tablet) {
+                font-size: 4rem;
+            }
         }
 
         a {
