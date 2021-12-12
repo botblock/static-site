@@ -10,11 +10,18 @@
 import getFeatures from '../../util/getFeatures';
 import getLists from '../../util/getLists';
 import getList from '../../util/getList';
+import generateHead from '../../util/generateHead';
 import Lists from '../../components/lists';
 import ListsFooter from '../../components/cta/footerCta';
 import Footer from '../../components/footer';
 
 export default {
+    head() {
+        return generateHead({
+            title: data => data.feature.name,
+            description: data => `Lists on BotBlock with the feature: ${data.feature.name} - ${feature.description}`,
+        }, this);
+    },
     components: {
         Lists,
         ListsFooter,

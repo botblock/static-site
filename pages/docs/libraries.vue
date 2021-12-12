@@ -74,14 +74,21 @@
 
 <script>
 import { faAngleUp, faMinus, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import getLibraries from '../../util/getLibraries';
+import generateHead from '../../util/generateHead';
 import Nav from '../../components/nav';
 import Library from '../../components/docs/library';
 import ApiCta from '../../components/cta/apiCta';
 import Footer from '../../components/footer';
 import FA from '../../components/fa';
-import getLibraries from '../../util/getLibraries';
 
 export default {
+    head() {
+        return generateHead({
+            title: 'API Libraries',
+            description: 'Interact with the BotBlock API using libraries developed by the community',
+        }, this);
+    },
     components: {
         Nav,
         Library,

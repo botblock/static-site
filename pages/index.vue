@@ -191,6 +191,7 @@
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import getLists from '../util/getLists';
 import getList from '../util/getList';
+import generateHead from '../util/generateHead';
 import Nav from '../components/nav';
 import ApiCta from '../components/cta/apiCta';
 import List from '../components/list';
@@ -202,6 +203,9 @@ const lists = getLists()
     .map(list => getList(list.id));
 
 export default {
+    head() {
+        return generateHead({}, this);
+    },
     components: {
         Nav,
         ApiCta,

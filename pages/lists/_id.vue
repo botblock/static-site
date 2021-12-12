@@ -136,12 +136,19 @@
 import { faLanguage, faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons'
 import { faDiscord } from '@fortawesome/free-brands-svg-icons'
 import getList from '../../util/getList';
+import generateHead from '../../util/generateHead';
 import Nav from '../../components/nav';
 import List from '../../components/list';
 import FA from '../../components/fa';
-import Footer from "../../components/footer";
+import Footer from '../../components/footer';
 
 export default {
+    head() {
+        return generateHead({
+            title: data => data.list.name,
+            description: data => (data.list.description || '').trim(),
+        }, this);
+    },
     components: {
         Footer,
         Nav,

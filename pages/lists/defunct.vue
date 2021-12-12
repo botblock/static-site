@@ -9,11 +9,18 @@
 <script>
 import getLists from '../../util/getLists';
 import getList from '../../util/getList';
+import generateHead from '../../util/generateHead';
 import Lists from '../../components/lists';
 import ListsFooter from '../../components/cta/footerCta';
 import Footer from '../../components/footer';
 
 export default {
+    head() {
+        return generateHead({
+            title: 'Defunct Lists',
+            description: 'Lists tracked by BotBlock that are no longer functioning',
+        }, this);
+    },
     components: {
         Lists,
         ListsFooter,

@@ -31,6 +31,7 @@
 
 <script>
 import spec from '../../data/openapi.yml';
+import generateHead from '../../util/generateHead';
 import Hero from '../../components/docs/hero';
 import Route from '../../components/docs/route';
 import Footer from '../../components/footer';
@@ -76,6 +77,12 @@ const deref = (object, source) => {
 };
 
 export default {
+    head() {
+        return generateHead({
+            title: 'API Documentation',
+            description: 'A single POST request to send guild count, and many ways to GET data from BotBlock',
+        }, this);
+    },
     components: {
         LibsCta,
         Hero,

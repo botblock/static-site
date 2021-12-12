@@ -132,12 +132,19 @@
 
 <script>
 import { faAngleUp, faMinus, faAngleDown, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import getFeatures from '../../util/getFeatures';
+import generateHead from '../../util/generateHead';
 import Nav from '../../components/nav';
 import Footer from '../../components/footer';
 import FA from '../../components/fa';
-import getFeatures from '../../util/getFeatures';
 
 export default {
+    head() {
+        return generateHead({
+            title: 'Features',
+            description: 'All bot list features tracked by BotBlock',
+        }, this);
+    },
     components: {
         Nav,
         Footer,

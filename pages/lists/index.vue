@@ -67,12 +67,19 @@
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import getLists from '../../util/getLists';
 import getList from '../../util/getList';
+import generateHead from '../../util/generateHead';
 import Lists from '../../components/lists';
 import ListsFooter from '../../components/cta/footerCta';
 import Footer from '../../components/footer';
 import FA from '../../components/fa';
 
 export default {
+    head() {
+        return generateHead({
+            title: 'Bot Lists',
+            description: 'All active bot lists tracked by BotBlock',
+        }, this);
+    },
     components: {
         Lists,
         ListsFooter,
