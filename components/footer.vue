@@ -23,6 +23,9 @@
                 <NuxtLink to="/docs/libraries">
                     API Libraries
                 </NuxtLink>
+                <NuxtLink to="/about">
+                    About
+                </NuxtLink>
             </div>
 
             <div>
