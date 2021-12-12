@@ -48,6 +48,7 @@ module.exports = {
     },
     loading: { color: '#29a3d0' },
     css: [ 'modern-normalize' ],
+    modules: [ '@nuxtjs/sitemap' ],
     buildModules: [ 'nuxt-resolve-url-loader' ],
     generate: {
         fallback: '404.html',
@@ -64,5 +65,54 @@ module.exports = {
                 use: 'yaml-loader',
             });
         },
+    },
+    sitemap: {
+        hostname: 'https://botblock.org',
+        routes: [
+            {
+                url: '/',
+                priority: 1,
+            },
+            {
+                url: '/docs',
+                priority: 0.9,
+            },
+            {
+                url: '/docs/libraries',
+                priority: 0.8,
+            },
+            {
+                url: '/lists',
+                priority: 0.8,
+            },
+            {
+                url: '/features',
+                priority: 0.7,
+            },
+            ...jsonData('lists').map(list => ({
+                url: `/lists/${list}`,
+                priority: 0.6,
+            })),
+            {
+                url: '/lists/best-practices',
+                priority: 0.5,
+            },
+            {
+                url: '/about',
+                priority: 0.5,
+            },
+            ...jsonData('features').map(feature => ({
+                url: `/features/${feature}`,
+                priority: 0.4,
+            })),
+            {
+                url: '/lists/defunct',
+                priority: 0.3,
+            },
+            {
+                url: '/lists/hidden',
+                priority: 0.2,
+            },
+        ],
     },
 };
