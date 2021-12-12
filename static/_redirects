@@ -9,6 +9,11 @@
 
 /twitter https://twitter.com/botblockorg 302
 
-/submit https://github.com/botblock/data 302
-
 /github https://github.com/botblock 302
+
+/github/api https://github.com/botblock/api-worker 302
+
+/github/site https://github.com/botblock/static-site 302
+
+/github/data https://github.com/botblock/data 302
+/submit https://github.com/botblock/data 302
