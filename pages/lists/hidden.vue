@@ -5,12 +5,13 @@
             title="Hidden Lists"
             subtitle="View information for each list to see why they're hidden"
         />
-        <ListsFooter
-            text="Looking for the active bot lists?"
-            button="View bot lists"
-            link="/lists"
-        />
-        <Footer />
+        <Footer>
+            <ListsFooter
+                text="Looking for the active bot lists?"
+                button="View bot lists"
+                link="/lists"
+            />
+        </Footer>
     </div>
 </template>
 

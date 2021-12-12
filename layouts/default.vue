@@ -1,7 +1,5 @@
 <template>
-    <div>
-        <nuxt />
-    </div>
+    <nuxt class="content" />
 </template>
 
 <style lang="scss">
@@ -122,5 +120,11 @@ code {
     @media (min-width: $tablet) {
         width: 80%;
     }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 </style>

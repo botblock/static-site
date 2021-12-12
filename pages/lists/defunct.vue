@@ -5,12 +5,13 @@
             title="Defunct Lists"
             subtitle="Lists tracked by BotBlock that are no longer functioning"
         />
-        <ListsFooter
-            text="Looking for the active bot lists?"
-            button="View bot lists"
-            link="/lists"
-        />
-        <Footer />
+        <Footer>
+            <ListsFooter
+                text="Looking for the active bot lists?"
+                button="View bot lists"
+                link="/lists"
+            />
+        </Footer>
     </div>
 </template>
 

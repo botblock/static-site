@@ -17,8 +17,9 @@
                 />
             </div>
         </div>
-        <ApiCta footer />
-        <Footer />
+        <Footer>
+            <ApiCta footer />
+        </Footer>
     </div>
 </template>
 

@@ -19,12 +19,13 @@
                 </NuxtLink>
             </div>
         </div>
-        <ListsFooter
-            text="Are we missing a list? Let us know what lists to track on GitHub."
-            button="Submit a list"
-            link="/submit"
-        />
-        <Footer />
+        <Footer>
+            <ListsFooter
+                text="Are we missing a list? Let us know what lists to track on GitHub."
+                button="Submit a list"
+                link="/submit"
+            />
+        </Footer>
     </div>
 </template>
 

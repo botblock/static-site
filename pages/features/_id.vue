@@ -5,12 +5,13 @@
             :title="feature.name"
             :subtitle="`Feature: ${feature.description}`"
         />
-        <ListsFooter
-            text="Looking for other bot list features?"
-            button="View all features"
-            link="/features"
-        />
-        <Footer />
+        <Footer>
+            <ListsFooter
+                text="Looking for other bot list features?"
+                button="View all features"
+                link="/features"
+            />
+        </Footer>
     </div>
 </template>
 
