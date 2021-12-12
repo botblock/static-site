@@ -10,3 +10,11 @@ deploy-production:
 .PHONY: deploy-staging
 deploy-staging:
 	git push origin $(GIT_BRANCH):staging -f
+
+.PHONY: bootstrap
+bootstrap:
+	mkdir -p vendor
+	cd vendor && rm -rf data
+	cd vendor && git clone https://github.com/botblock/data
+	cd vendor && rm -rf discord-botlist-best-practices
+	cd vendor && git clone https://github.com/botblock/discord-botlist-best-practices

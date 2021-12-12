@@ -3,4 +3,5 @@ node_modules/
 .DS_Store
 .nuxt/
 dist/
-data/
+vendor/data/
+vendor/discord-botlist-best-practices/

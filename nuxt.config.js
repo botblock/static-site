@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const jsonData = dir => fs.readdirSync(path.join(__dirname, 'data', 'data', dir))
+const jsonData = dir => fs.readdirSync(path.join(__dirname, 'vendor', 'data', 'data', dir))
     .map(file => file.match(/^(.+)\.json$/)[1])
     .filter(file => !!file);
 
@@ -64,6 +64,10 @@ module.exports = {
                 test: /\.ya?ml$/,
                 type: 'json',
                 use: 'yaml-loader',
+            });
+            config.module.rules.push({
+                test: /\.md$/,
+                use: 'raw-loader',
             });
         },
     },

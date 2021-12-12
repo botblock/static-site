@@ -25,6 +25,7 @@
     "eslint": "^8.2.0",
     "nuxt": "^2.15.8",
     "nuxt-resolve-url-loader": "^1.0.4",
+    "raw-loader": "^4.0.2",
     "sass": "^1.43.4",
     "sass-loader": "^10.2.0",
     "yaml-loader": "^0.6.0"

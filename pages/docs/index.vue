@@ -30,7 +30,7 @@
 </style>
 
 <script>
-import spec from '../../data/openapi.yml';
+import spec from '../../vendor/data/openapi.yml';
 import generateHead from '../../util/generateHead';
 import Hero from '../../components/docs/hero';
 import Route from '../../components/docs/route';
