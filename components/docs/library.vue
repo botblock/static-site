@@ -183,16 +183,6 @@
                     margin: 0;
                 }
             }
-
-            a {
-                color: $brand;
-                text-decoration: none;
-
-                &:hover,
-                &:focus {
-                    text-decoration: underline;
-                }
-            }
         }
 
         .example {
@@ -210,6 +200,8 @@
                 code {
                     background: none;
                     border: none;
+                    padding: 0;
+                    border-radius: 0;
                 }
             }
         }

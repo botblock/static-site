@@ -104,6 +104,10 @@
 
             code {
                 white-space: pre;
+                background: none;
+                border: none;
+                padding: 0;
+                border-radius: 0;
             }
         }
     }

@@ -89,6 +89,27 @@ p {
     margin-top: 0;
 }
 
+a {
+    color: $brand;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+b {
+    font-weight: $weight-bold;
+}
+
+code {
+    background: mix($dark, $brand, 90%);
+    border: 1px solid mix($dark, $brand, 80%);
+    padding: .125rem .25rem;
+    border-radius: .5rem;
+}
+
 .container {
     max-width: 1280px;
     width: calc(100% - 2rem);

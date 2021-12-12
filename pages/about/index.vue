@@ -143,16 +143,6 @@
                 font-size: 3rem;
             }
         }
-
-        a {
-            color: $brand;
-            text-decoration: none;
-
-            &:hover,
-            &:focus {
-                text-decoration: underline;
-            }
-        }
     }
 }
 </style>

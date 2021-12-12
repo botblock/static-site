@@ -5,8 +5,8 @@
             <p>{{ list.url }}</p>
             <div class="links">
                 <NuxtLink :to="`/lists/${list.id}`" class="highlight" v-if="!hideInformationLink">Information</NuxtLink>
-                <a :href="list.url" :class="{ highlight: hideInformationLink }">Website</a>
-                <a :href="list.discord" v-if="list.discord">Discord</a>
+                <a :href="list.url" rel="noopener" :class="{ highlight: hideInformationLink }">Website</a>
+                <a :href="list.discord" rel="noopener" v-if="list.discord">Discord</a>
             </div>
             <div :class="{ feature: true, active: hasFeature }">
                 <div><FA :icon="hasFeature ? icons.faCheck : icons.faMinus" /></div>
