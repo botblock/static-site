@@ -8,7 +8,10 @@
             </div>
             <div class="terminal">
                 <div>
-                    <code v-text="demo" tabindex="-1" />
+                    <code
+                        tabindex="-1"
+                        v-text="demo"
+                    />
                 </div>
             </div>
         </div>
@@ -108,8 +111,8 @@ $triangle-height: 5rem;
             }
 
             div {
-                background: $dark;
-                border: 1px solid mix($dark, $brand, 10%);
+                background: mix($dark, $brand, 90%);
+                border: 1px solid mix($dark, $brand, 80%);
                 color: $light;
                 padding: 1rem 1rem 1rem calc(1rem + 2ch);
                 border-radius: .5rem;
@@ -117,8 +120,12 @@ $triangle-height: 5rem;
                 max-width: 100%;
 
                 code {
-                    display: block;
                     white-space: pre;
+                    background: none;
+                    border: none;
+                    padding: 0;
+                    border-radius: 0;
+                    display: block;
                     position: relative;
 
                     &::before {

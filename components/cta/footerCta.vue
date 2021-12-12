@@ -2,7 +2,9 @@
     <div class="cta">
         <div class="container">
             <p>{{ text }}</p>
-            <NuxtLink :to="link">{{ button }} <FA :icon="icons.faAngleRight" /></NuxtLink>
+            <NuxtLink :to="link">
+                {{ button }} <FA :icon="icons.faAngleRight" />
+            </NuxtLink>
         </div>
     </div>
 </template>

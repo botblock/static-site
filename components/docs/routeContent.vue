@@ -3,23 +3,36 @@
         <p>{{ type }}</p>
         <div>
             <div class="schema">
-                <component :is="level">Schema</component>
-                <RouteSchema :data="data.schema" prop="" />
+                <component :is="level">
+                    Schema
+                </component>
+                <RouteSchema
+                    :data="data.schema"
+                    prop=""
+                />
             </div>
-            <div v-if="data.examples" class="examples">
-                <component :is="level">Examples</component>
+            <div
+                v-if="data.examples"
+                class="examples"
+            >
+                <component :is="level">
+                    Examples
+                </component>
                 <div class="buttons">
-                    <button v-for="(_, exampleName) in data.examples"
-                            :key="exampleName"
-                            :class="{ active: example === exampleName }"
-                            @click.prevent="setExample(exampleName)">
+                    <button
+                        v-for="(_, exampleName) in data.examples"
+                        :key="exampleName"
+                        :class="{ active: example === exampleName }"
+                        @click.prevent="setExample(exampleName)"
+                    >
                         {{ exampleName }}
                     </button>
                 </div>
-                <div v-for="(exampleData, exampleName) in data.examples"
-                     :key="exampleName"
-                     v-if="example === exampleName" class="example">
-                    <code>{{ JSON.stringify(exampleData.value, null, 2) }}</code>
+                <div
+                    :key="example"
+                    class="example"
+                >
+                    <code>{{ JSON.stringify(data.examples[example].value, null, 2) }}</code>
                 </div>
             </div>
         </div>
@@ -119,7 +132,7 @@ import RouteSchema from './routeSchema';
 
 export default {
     components: {
-        RouteSchema
+        RouteSchema,
     },
     props: {
         data: {

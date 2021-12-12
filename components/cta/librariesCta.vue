@@ -9,7 +9,9 @@
                     designed with Discord bots in mind.
                 </p>
             </div>
-            <NuxtLink to="/docs/libraries">Explore libraries <FA :icon="icons.faAngleRight" /></NuxtLink>
+            <NuxtLink to="/docs/libraries">
+                Explore libraries <FA :icon="icons.faAngleRight" />
+            </NuxtLink>
         </div>
     </div>
 </template>

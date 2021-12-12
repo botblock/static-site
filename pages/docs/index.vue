@@ -2,11 +2,21 @@
     <div>
         <Hero />
         <div class="container">
-            <Route :route="routes[0][0]" :data="routes[0][1]" class="route" />
+            <Route
+                :route="routes[0][0]"
+                :data="routes[0][1]"
+                class="route"
+            />
         </div>
         <LibsCta />
         <div class="container">
-            <Route :route="route" :data="data" class="route" v-for="([ route, data ]) in routes.slice(1)" :key="route" />
+            <Route
+                v-for="([ route, data ]) in routes.slice(1)"
+                :key="route"
+                :route="route"
+                :data="data"
+                class="route"
+            />
         </div>
         <Footer class="footer" />
     </div>
@@ -77,12 +87,6 @@ const deref = (object, source) => {
 };
 
 export default {
-    head() {
-        return generateHead({
-            title: 'API Documentation',
-            description: 'A single POST request to send guild count, and many ways to GET data from BotBlock',
-        }, this);
-    },
     components: {
         LibsCta,
         Hero,
@@ -93,6 +97,12 @@ export default {
         return {
             routes: Object.entries(deref(routes, spec)),
         };
+    },
+    head() {
+        return generateHead({
+            title: 'API Documentation',
+            description: 'A single POST request to send guild count, and many ways to GET data from BotBlock',
+        }, this);
     },
 };
 </script>

@@ -1,19 +1,29 @@
 <template>
     <div>
-        <Lists :lists="lists" title="Bot Lists" subtitle="All active bot lists tracked by BotBlock" />
+        <Lists
+            :lists="lists"
+            title="Bot Lists"
+            subtitle="All active bot lists tracked by BotBlock"
+        />
         <div class="others">
             <div class="container">
                 <p>{{ defunctCount }} lists are marked as defunct and not shown here.</p>
-                <NuxtLink to="/lists/defunct">View defunct lists <FA :icon="icons.faAngleRight" /></NuxtLink>
+                <NuxtLink to="/lists/defunct">
+                    View defunct lists <FA :icon="icons.faAngleRight" />
+                </NuxtLink>
             </div>
             <div class="container">
                 <p>{{ hiddenCount }} lists are marked as hidden and not shown here.</p>
-                <NuxtLink to="/lists/hidden">View hidden lists <FA :icon="icons.faAngleRight" /></NuxtLink>
+                <NuxtLink to="/lists/hidden">
+                    View hidden lists <FA :icon="icons.faAngleRight" />
+                </NuxtLink>
             </div>
         </div>
-        <ListsFooter text="Are we missing a list? Let us know what lists to track on GitHub."
-                     button="Submit a list"
-                     link="/submit" />
+        <ListsFooter
+            text="Are we missing a list? Let us know what lists to track on GitHub."
+            button="Submit a list"
+            link="/submit"
+        />
         <Footer />
     </div>
 </template>
@@ -74,12 +84,6 @@ import Footer from '../../components/footer';
 import FA from '../../components/fa';
 
 export default {
-    head() {
-        return generateHead({
-            title: 'Bot Lists',
-            description: 'All active bot lists tracked by BotBlock',
-        }, this);
-    },
     components: {
         Lists,
         ListsFooter,
@@ -95,6 +99,12 @@ export default {
                 faAngleRight,
             },
         };
+    },
+    head() {
+        return generateHead({
+            title: 'Bot Lists',
+            description: 'All active bot lists tracked by BotBlock',
+        }, this);
     },
 };
 </script>

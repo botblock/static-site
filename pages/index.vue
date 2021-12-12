@@ -17,8 +17,14 @@
         <div class="lists">
             <div class="container">
                 <h2>Recent Lists</h2>
-                <List :list="list" :key="list.id" v-for="list in lists"/>
-                <NuxtLink to="/lists">Explore more lists <FA :icon="icons.faAngleRight" /></NuxtLink>
+                <List
+                    v-for="list in lists"
+                    :key="list.id"
+                    :list="list"
+                />
+                <NuxtLink to="/lists">
+                    Explore more lists <FA :icon="icons.faAngleRight" />
+                </NuxtLink>
             </div>
         </div>
         <Footer />
@@ -203,9 +209,6 @@ const lists = getLists()
     .map(list => getList(list.id));
 
 export default {
-    head() {
-        return generateHead({}, this);
-    },
     components: {
         Nav,
         ApiCta,
@@ -215,13 +218,16 @@ export default {
     },
     data() {
         return {
-            lists: lists.sort((a, b) => a.added > b.added ? -1: 1).slice(0, 6),
+            lists: lists.sort((a, b) => a.added > b.added ? -1 : 1).slice(0, 6),
             listCount: lists.length,
             apiCount: lists.filter(list => !!list.api_post).length,
             icons: {
                 faAngleRight,
             },
         };
+    },
+    head() {
+        return generateHead({}, this);
     },
 };
 </script>

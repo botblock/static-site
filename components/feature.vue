@@ -4,8 +4,12 @@
             <div class="icon">
                 <FA :icon="featureIcon(feature.type)" />
             </div>
-            <p v-if="small">{{ feature.name }}</p>
-            <h2 v-else>{{ feature.name }}</h2>
+            <p v-if="small">
+                {{ feature.name }}
+            </p>
+            <h2 v-else>
+                {{ feature.name }}
+            </h2>
         </div>
         <p>{{ feature.description }}</p>
         <NuxtLink :to="`/features/${feature.id}`">

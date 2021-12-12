@@ -9,7 +9,12 @@
         </div>
         <div class="features">
             <div class="container">
-                <Feature class="feature" :feature="feature" v-for="feature in features" :key="feature.id" />
+                <Feature
+                    v-for="feature in features"
+                    :key="feature.id"
+                    class="feature"
+                    :feature="feature"
+                />
             </div>
         </div>
         <Footer />
@@ -76,12 +81,6 @@ import Footer from '../../components/footer';
 import Feature from '../../components/feature';
 
 export default {
-    head() {
-        return generateHead({
-            title: 'Features',
-            description: 'All bot list features tracked by BotBlock',
-        }, this);
-    },
     components: {
         Nav,
         Footer,
@@ -94,6 +93,12 @@ export default {
                 return a.display < b.display ? 1 : -1;
             }),
         };
+    },
+    head() {
+        return generateHead({
+            title: 'Features',
+            description: 'All bot list features tracked by BotBlock',
+        }, this);
     },
 };
 </script>

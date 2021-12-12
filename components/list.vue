@@ -4,16 +4,35 @@
             <h3>{{ list.id }}</h3>
             <p>{{ list.url }}</p>
             <div class="links">
-                <NuxtLink :to="`/lists/${list.id}`" class="highlight" v-if="!hideInformationLink">Information</NuxtLink>
-                <a :href="list.url" rel="noopener" :class="{ highlight: hideInformationLink }">Website</a>
-                <a :href="list.discord" rel="noopener" v-if="list.discord">Discord</a>
+                <NuxtLink
+                    v-if="!hideInformationLink"
+                    :to="`/lists/${list.id}`"
+                    class="highlight"
+                >
+                    Information
+                </NuxtLink>
+                <a
+                    :href="list.url"
+                    rel="noopener"
+                    :class="{ highlight: hideInformationLink }"
+                >Website</a>
+                <a
+                    v-if="list.discord"
+                    :href="list.discord"
+                    rel="noopener"
+                >Discord</a>
             </div>
             <div :class="{ feature: true, active: hasFeature }">
                 <div><FA :icon="hasFeature ? icons.faCheck : icons.faMinus" /></div>
                 <p>{{ featureText }}</p>
             </div>
         </div>
-        <img :src="list.icon" @error="iconError" loading="lazy" alt="" />
+        <img
+            :src="list.icon"
+            loading="lazy"
+            alt=""
+            @error="iconError"
+        >
     </div>
 </template>
 

@@ -1,7 +1,15 @@
 <template>
     <div>
-        <Lists :lists="lists" title="Hidden Lists" subtitle="View information for each list to see why they're hidden" />
-        <ListsFooter text="Looking for the active bot lists?" button="View bot lists" link="/lists" />
+        <Lists
+            :lists="lists"
+            title="Hidden Lists"
+            subtitle="View information for each list to see why they're hidden"
+        />
+        <ListsFooter
+            text="Looking for the active bot lists?"
+            button="View bot lists"
+            link="/lists"
+        />
         <Footer />
     </div>
 </template>
@@ -15,12 +23,6 @@ import ListsFooter from '../../components/cta/footerCta';
 import Footer from '../../components/footer';
 
 export default {
-    head() {
-        return generateHead({
-            title: 'Hidden Lists',
-            description: 'Lists hidden on BotBlock',
-        }, this);
-    },
     components: {
         Lists,
         ListsFooter,
@@ -30,6 +32,12 @@ export default {
         return {
             lists: getLists().filter(list => !list.display).map(list => getList(list.id)),
         };
+    },
+    head() {
+        return generateHead({
+            title: 'Hidden Lists',
+            description: 'Lists hidden on BotBlock',
+        }, this);
     },
 };
 </script>

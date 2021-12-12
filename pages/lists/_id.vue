@@ -8,7 +8,10 @@
                     <p>{{ list.description }}</p>
                     <p>Added: {{ formatDate(list.added) }}</p>
                 </div>
-                <List :list="list" hide-information-link />
+                <List
+                    :list="list"
+                    hide-information-link
+                />
             </div>
         </div>
         <div class="container">
@@ -56,19 +59,26 @@
                         <p>
                             Unfortunately, <b>this list has no known API</b> tracked by BotBlock.
                             Due to this, this list is not included in the
-                            <NuxtLink to="/docs#post-api-count">guild count API endpoint</NuxtLink>, or the
-                            <NuxtLink to="/docs#get-api-bots-id">bot information API endpoint</NuxtLink>.
+                            <NuxtLink to="/docs#post-api-count">
+                                guild count API endpoint
+                            </NuxtLink>, or the
+                            <NuxtLink to="/docs#get-api-bots-id">
+                                bot information API endpoint
+                            </NuxtLink>.
                         </p>
                         <p>
                             Incorrect? We rely on the community to keep out list information up-to-date, and we welcome
-                            contributions to update <a href="/github/data" target="_blank">our open data</a>.
+                            contributions to update <a
+                                href="/github/data"
+                                target="_blank"
+                            >our open data</a>.
                         </p>
                     </template>
                     <template v-else>
                         <template v-if="list.api_post && list.api_field">
                             <p>
                                 This list has a POST endpoint for bot build counts, and <b>is supported by the BotBlock
-                                <NuxtLink to="/docs#post-api-count">guild count API</NuxtLink></b>. Using the BotBlock
+                                    <NuxtLink to="/docs#post-api-count">guild count API</NuxtLink></b>. Using the BotBlock
                                 API call allows bot developers to make a single POST call to send their bot guild count
                                 to all lists supported by BotBlock.
                             </p>
@@ -114,13 +124,19 @@
                         <template v-else>
                             Unfortunately, this list does not have a POST endpoint for bot guild counts, and as such,
                             is not supported by the BotBlock
-                            <NuxtLink to="/docs#post-api-count">guild count API endpoint</NuxtLink>.
+                            <NuxtLink to="/docs#post-api-count">
+                                guild count API endpoint
+                            </NuxtLink>.
                         </template>
 
                         <template v-if="list.api_docs">
                             <p>
                                 This list has API docs covering their specific endpoints available to access at
-                                <a :href="list.api_docs" target="_blank" rel="noopener">{{ list.api_docs }}</a>.
+                                <a
+                                    :href="list.api_docs"
+                                    target="_blank"
+                                    rel="noopener"
+                                >{{ list.api_docs }}</a>.
                             </p>
                         </template>
 
@@ -128,7 +144,7 @@
                             <p>
                                 This list provides an API endpoint to fetch information about bots published on the
                                 list, and <b>is supported as part of the BotBlock
-                                <NuxtLink to="/docs#get-api-bots-id">bot information API endpoint</NuxtLink></b>. The
+                                    <NuxtLink to="/docs#get-api-bots-id">bot information API endpoint</NuxtLink></b>. The
                                 direct list endpoint is <code>{{ list.api_get }}</code>.
                             </p>
                         </template>
@@ -150,7 +166,12 @@
                 </div>
                 <div>
                     <h3>List Features</h3>
-                    <Feature :feature="feature" small v-for="feature in list.features" :key="feature.id" />
+                    <Feature
+                        v-for="feature in list.features"
+                        :key="feature.id"
+                        :feature="feature"
+                        small
+                    />
                 </div>
             </div>
         </div>
@@ -244,8 +265,8 @@
 </style>
 
 <script>
-import { faLanguage, faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons'
-import { faDiscord } from '@fortawesome/free-brands-svg-icons'
+import { faLanguage, faUserFriends, faRobot } from '@fortawesome/free-solid-svg-icons';
+import { faDiscord } from '@fortawesome/free-brands-svg-icons';
 import getList from '../../util/getList';
 import generateHead from '../../util/generateHead';
 import Nav from '../../components/nav';
@@ -255,12 +276,6 @@ import FA from '../../components/fa';
 import Feature from '../../components/feature';
 
 export default {
-    head() {
-        return generateHead({
-            title: data => data.list.name,
-            description: data => (data.list.description || '').trim(),
-        }, this);
-    },
     components: {
         Nav,
         Footer,
@@ -283,6 +298,12 @@ export default {
                 faDiscord,
             },
         };
+    },
+    head() {
+        return generateHead({
+            title: data => `${data.list.name} - Bot Lists`,
+            description: data => (data.list.description || '').trim(),
+        }, this);
     },
     methods: {
         formatDate(timestamp) {

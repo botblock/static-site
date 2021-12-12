@@ -9,7 +9,12 @@
         </div>
         <div class="libraries">
             <div class="container">
-                <Library :library="library" class="library" v-for="library in libraries" :key="library.repo" />
+                <Library
+                    v-for="library in libraries"
+                    :key="library.repo"
+                    :library="library"
+                    class="library"
+                />
             </div>
         </div>
         <ApiCta footer />
@@ -71,21 +76,13 @@ import Nav from '../../components/nav';
 import Library from '../../components/docs/library';
 import ApiCta from '../../components/cta/apiCta';
 import Footer from '../../components/footer';
-import FA from '../../components/fa';
 
 export default {
-    head() {
-        return generateHead({
-            title: 'API Libraries',
-            description: 'Interact with the BotBlock API using libraries developed by the community',
-        }, this);
-    },
     components: {
         Nav,
         Library,
         ApiCta,
         Footer,
-        FA,
     },
     data() {
         return {
@@ -100,6 +97,12 @@ export default {
                 faAngleRight,
             },
         };
+    },
+    head() {
+        return generateHead({
+            title: 'API Libraries',
+            description: 'Interact with the BotBlock API using libraries developed by the community',
+        }, this);
     },
 };
 </script>

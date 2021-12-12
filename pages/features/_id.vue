@@ -1,7 +1,15 @@
 <template>
     <div>
-        <Lists :lists="lists" :title="feature.name" :subtitle="`Feature: ${feature.description}`" />
-        <ListsFooter text="Looking for other bot list features?" button="View all features" link="/features" />
+        <Lists
+            :lists="lists"
+            :title="feature.name"
+            :subtitle="`Feature: ${feature.description}`"
+        />
+        <ListsFooter
+            text="Looking for other bot list features?"
+            button="View all features"
+            link="/features"
+        />
         <Footer />
     </div>
 </template>
@@ -16,12 +24,6 @@ import ListsFooter from '../../components/cta/footerCta';
 import Footer from '../../components/footer';
 
 export default {
-    head() {
-        return generateHead({
-            title: data => data.feature.name,
-            description: data => `Lists on BotBlock with the feature: ${data.feature.name} - ${feature.description}`,
-        }, this);
-    },
     components: {
         Lists,
         ListsFooter,
@@ -40,6 +42,12 @@ export default {
             feature: {},
             lists: [],
         };
+    },
+    head() {
+        return generateHead({
+            title: data => `${data.feature.name} - Features`,
+            description: data => `Lists on BotBlock with: ${data.feature.name} - ${data.feature.description}`,
+        }, this);
     },
 };
 </script>

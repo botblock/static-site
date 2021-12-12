@@ -12,7 +12,9 @@
                     automations directly.
                 </p>
             </div>
-            <NuxtLink to="/docs">Read the docs <FA :icon="icons.faAngleRight" /></NuxtLink>
+            <NuxtLink to="/docs">
+                Read the docs <FA :icon="icons.faAngleRight" />
+            </NuxtLink>
         </div>
     </div>
 </template>

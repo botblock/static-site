@@ -9,13 +9,21 @@
         </div>
         <div class="lists">
             <div class="container">
-                <List :list="list" :key="list.id" v-for="list in listsOne"/>
+                <List
+                    v-for="list in listsOne"
+                    :key="list.id"
+                    :list="list"
+                />
             </div>
         </div>
         <ApiCta v-if="showCta" />
         <div class="lists">
             <div class="container">
-                <List :list="list" :key="list.id" v-for="list in listsTwo"/>
+                <List
+                    v-for="list in listsTwo"
+                    :key="list.id"
+                    :list="list"
+                />
             </div>
         </div>
     </div>
@@ -78,16 +86,12 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import Nav from './nav';
 import ApiCta from './cta/apiCta';
 import List from './list';
-import Footer from './footer';
-import FA from './fa';
 
 export default {
     components: {
         Nav,
         ApiCta,
         List,
-        Footer,
-        FA,
     },
     props: {
         title: {
@@ -101,11 +105,18 @@ export default {
         lists: {
             type: Array,
             required: true,
-        }
+        },
+    },
+    data() {
+        return {
+            icons: {
+                faAngleRight,
+            },
+        };
     },
     computed: {
         listsSorted() {
-            return this.lists.sort((a, b) => {
+            return [...this.lists].sort((a, b) => {
                 if (a.discord_only !== b.discord_only) return a.discord_only ? -1 : 1;
                 return a.id.localeCompare(b.id) > 0 ? 1 : -1;
             });
@@ -122,13 +133,6 @@ export default {
         showCta() {
             return this.lists.length >= 8;
         },
-    },
-    data() {
-        return {
-            icons: {
-                faAngleRight,
-            },
-        };
     },
 };
 </script>

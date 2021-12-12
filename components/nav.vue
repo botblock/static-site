@@ -1,17 +1,27 @@
 <template>
     <div>
         <div :class="{ container: true, dark }">
-            <NuxtLink to="/" class="logo">
+            <NuxtLink
+                to="/"
+                class="logo"
+            >
                 <Logo />
             </NuxtLink>
 
             <div>
-                <NuxtLink to="/lists">Lists</NuxtLink>
-                <NuxtLink to="/docs">API Docs</NuxtLink>
+                <NuxtLink to="/lists">
+                    Lists
+                </NuxtLink>
+                <NuxtLink to="/docs">
+                    API Docs
+                </NuxtLink>
             </div>
 
             <div>
-                <a href="/github" target="_blank">GitHub <FA :icon="icons.faExternalLinkAlt" /></a>
+                <a
+                    href="/github"
+                    target="_blank"
+                >GitHub <FA :icon="icons.faExternalLinkAlt" /></a>
             </div>
         </div>
     </div>

@@ -1,12 +1,19 @@
 <template>
-    <div class="library" :id="sluggify(library.repo)">
+    <div
+        :id="sluggify(library.repo)"
+        class="library"
+    >
         <div class="heading">
             <h2>
                 <small>{{ library.language }} - </small>
                 {{ library.name }}
             </h2>
             <div>
-                <a class="repo" :href="`https://github.com/${library.repo}`" target="_blank">
+                <a
+                    class="repo"
+                    :href="`https://github.com/${library.repo}`"
+                    target="_blank"
+                >
                     {{ library.repo }}
                 </a>
                 <a :href="`#${sluggify(library.repo)}`">
@@ -18,30 +25,58 @@
             </div>
         </div>
 
-        <div class="info" v-if="visible">
+        <div
+            v-if="visible"
+            class="info"
+        >
             <div class="links">
                 <div v-if="library.badge_image">
-                    <a :href="library.badge_url" v-if="library.badge_url">
-                        <img :src="library.badge_image" alt="" />
+                    <a
+                        v-if="library.badge_url"
+                        :href="library.badge_url"
+                    >
+                        <img
+                            :src="library.badge_image"
+                            alt=""
+                        >
                     </a>
-                    <img :src="library.badge_image" alt="" v-else />
+                    <img
+                        v-else
+                        :src="library.badge_image"
+                        alt=""
+                    >
                 </div>
 
-                <a :href="library.package_link" target="_blank">
+                <a
+                    :href="library.package_link"
+                    target="_blank"
+                >
                     View on {{ library.package_link_name }}
                     <FA :icon="icons.faExternalLinkAlt" />
                 </a>
-                <a :href="`https://github.com/${library.repo}`" target="_blank">
+                <a
+                    :href="`https://github.com/${library.repo}`"
+                    target="_blank"
+                >
                     View on GitHub
                     <FA :icon="icons.faExternalLinkAlt" />
                 </a>
             </div>
             <div>
-                <div class="description" v-html="render(library.description)" />
+                <div
+                    class="description"
+                    v-html="render(library.description)"
+                />
 
-                <div class="example" v-if="library.example_usage">
+                <div
+                    v-if="library.example_usage"
+                    class="example"
+                >
                     <h3>Example Usage</h3>
-                    <PrismHighlight :language="languageLoaded ? language : 'text'" :code="library.example_usage" />
+                    <PrismHighlight
+                        :language="languageLoaded ? language : 'text'"
+                        :code="library.example_usage"
+                    />
                 </div>
             </div>
         </div>
@@ -216,13 +251,13 @@ import Prism from 'prismjs';
 import MarkdownIt from 'markdown-it';
 import { faEye, faEyeSlash, faLink, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import PrismHighlight from 'vue-prism-component';
-import FA from '../fa';
 import sluggify from '../../util/sluggify';
+import FA from '../fa';
 
 const md = MarkdownIt({
     html: true,
     linkify: true,
-    typographer: true
+    typographer: true,
 });
 
 const languageMap = Object.freeze({
@@ -252,11 +287,8 @@ export default {
             },
         };
     },
-    beforeMount() {
-        this.loadLanguage();
-    },
     computed: {
-        language () {
+        language() {
             return languageMap[this.library.language] || this.library.language.toLowerCase();
         },
     },
@@ -264,6 +296,9 @@ export default {
         language() {
             this.loadLanguage();
         },
+    },
+    beforeMount() {
+        this.loadLanguage();
     },
     methods: {
         toggleVisible() {

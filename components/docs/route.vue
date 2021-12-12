@@ -1,5 +1,8 @@
 <template>
-    <div class="route" :id="sluggify(route)">
+    <div
+        :id="sluggify(route)"
+        class="route"
+    >
         <div class="heading">
             <h2>{{ data.summary }}</h2>
             <div>
@@ -14,32 +17,51 @@
         </div>
 
         <template v-if="visible">
-            <div class="description" v-html="render(data.description)" v-if="data.description" />
+            <div
+                v-if="data.description"
+                class="description"
+                v-html="render(data.description)"
+            />
 
-            <div class="parameters" v-if="data.parameters">
+            <div
+                v-if="data.parameters"
+                class="parameters"
+            >
                 <div v-if="parametersPath.length">
                     <h3>Path Parameters</h3>
-                    <div v-for="body in parametersPath" :key="body.name">
+                    <div
+                        v-for="body in parametersPath"
+                        :key="body.name"
+                    >
                         <div class="prop">
                             <code>{{ body.name }}</code>
                             <code v-if="body.schema && body.schema.type">
                                 {{ body.schema.type }}<span v-if="body.schema.format">&lt;{{ body.schema.format }}&gt;</span>
                             </code>
                         </div>
-                        <div v-html="render(body.description)" v-if="body.description" />
+                        <div
+                            v-if="body.description"
+                            v-html="render(body.description)"
+                        />
                     </div>
                 </div>
 
                 <div v-if="parametersQuery.length">
                     <h3>Query Parameters</h3>
-                    <div v-for="body in parametersQuery" :key="body.name">
+                    <div
+                        v-for="body in parametersQuery"
+                        :key="body.name"
+                    >
                         <div class="prop">
                             <code>{{ body.name }}</code>
                             <code v-if="body.schema && body.schema.type">
                                 {{ body.schema.type }}<span v-if="body.schema.format">&lt;{{ body.schema.format }}&gt;</span>
                             </code>
                         </div>
-                        <div v-html="render(body.description)" v-if="body.description" />
+                        <div
+                            v-if="body.description"
+                            v-html="render(body.description)"
+                        />
                     </div>
                 </div>
             </div>
@@ -49,31 +71,59 @@
                     Request body
                     <small v-if="data.requestBody.required">(required)</small>
                 </h3>
-                <div class="request-body" v-for="(body, type) in data.requestBody.content" :key="type">
-                    <RouteContent :type="type" :data="body" />
+                <div
+                    v-for="(body, type) in data.requestBody.content"
+                    :key="type"
+                    class="request-body"
+                >
+                    <RouteContent
+                        :type="type"
+                        :data="body"
+                    />
                 </div>
             </template>
 
             <h3>Responses</h3>
-            <div class="response" v-for="(response, status) in data.responses" :key="status">
+            <div
+                v-for="(response, status) in data.responses"
+                :key="status"
+                class="response"
+            >
                 <div class="heading">
                     <h4>{{ status }}</h4>
-                    <div class="description" v-html="render(response.description)" v-if="response.description" />
+                    <div
+                        v-if="response.description"
+                        class="description"
+                        v-html="render(response.description)"
+                    />
                 </div>
-                <div v-for="(body, type) in response.content" :key="type">
-                    <RouteContent :type="type" :data="body" level="h5" />
+                <div
+                    v-for="(body, type) in response.content"
+                    :key="type"
+                >
+                    <RouteContent
+                        :type="type"
+                        :data="body"
+                        level="h5"
+                    />
                 </div>
 
                 <template v-if="response.headers">
                     <h5>Headers</h5>
-                    <div v-for="(body, header) in response.headers" :key="header">
+                    <div
+                        v-for="(body, header) in response.headers"
+                        :key="header"
+                    >
                         <div class="prop">
                             <code>{{ header }}</code>
                             <code v-if="body.schema && body.schema.type">
                                 {{ body.schema.type }}<span v-if="body.schema.format">&lt;{{ body.schema.format }}&gt;</span>
                             </code>
                         </div>
-                        <div v-html="render(body.description)" v-if="body.description" />
+                        <div
+                            v-if="body.description"
+                            v-html="render(body.description)"
+                        />
                     </div>
                 </template>
             </div>
@@ -215,32 +265,30 @@
 
 <script>
 import MarkdownIt from 'markdown-it';
-import { faLink, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons'
+import { faLink, faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import sluggify from '../../util/sluggify';
 import FA from '../fa';
 import RouteContent from './routeContent';
-import RouteSchema from './routeSchema';
-import sluggify from '../../util/sluggify';
 
 const md = MarkdownIt({
     html: true,
     linkify: true,
-    typographer: true
+    typographer: true,
 });
 
 export default {
     components: {
         FA,
         RouteContent,
-        RouteSchema,
     },
     props: {
         data: {
             type: Object,
-            required: true
+            required: true,
         },
         route: {
             type: String,
-            required: true
+            required: true,
         },
     },
     data() {

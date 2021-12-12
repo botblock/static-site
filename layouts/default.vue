@@ -123,6 +123,4 @@ code {
         width: 80%;
     }
 }
-
-
 </style>

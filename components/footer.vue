@@ -2,7 +2,10 @@
     <div class="footer">
         <div class="container">
             <div>
-                <NuxtLink to="/" class="logo">
+                <NuxtLink
+                    to="/"
+                    class="logo"
+                >
                     <Logo />
                 </NuxtLink>
                 <p>

@@ -8,7 +8,11 @@ module.exports = {
     parserOptions: {
         ecmaVersion: 12,
     },
-    extends: 'eslint:recommended',
+    extends: [
+        'eslint:recommended',
+        'plugin:vue/recommended',
+        'plugin:nuxt/recommended',
+    ],
     rules: {
         'space-before-function-paren': [
             'error',
@@ -96,5 +100,17 @@ module.exports = {
             },
         ],
         'space-infix-ops': 'error',
+        'vue/component-tags-order': [
+            'error',
+            {
+                order: [ 'template', 'style', 'script' ],
+            },
+        ],
+        'vue/multi-word-component-names': 'off',
+        'vue/no-v-html': 'off',
+        'vue/html-indent': [
+            'error',
+            4,
+        ],
     },
 };

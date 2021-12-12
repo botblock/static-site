@@ -8,7 +8,10 @@
             </div>
         </div>
         <div class="container">
-            <div class="practices" v-html="render(practices)" />
+            <div
+                class="practices"
+                v-html="render(practices)"
+            />
         </div>
         <Footer />
     </div>
@@ -80,16 +83,10 @@ import Footer from '../../components/footer';
 const md = MarkdownIt({
     html: true,
     linkify: true,
-    typographer: true
+    typographer: true,
 });
 
 export default {
-    head() {
-        return generateHead({
-            title: 'Best Practices',
-            description: 'A curated set of best practices recommended for bot lists',
-        }, this);
-    },
     components: {
         Nav,
         Footer,
@@ -98,6 +95,12 @@ export default {
         return {
             practices,
         };
+    },
+    head() {
+        return generateHead({
+            title: 'Best Practices',
+            description: 'A curated set of best practices recommended for bot lists',
+        }, this);
     },
     methods: {
         render(text) {
