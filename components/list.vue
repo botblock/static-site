@@ -13,7 +13,7 @@
                 <p>{{ featureText }}</p>
             </div>
         </div>
-        <img :src="list.icon" loading="lazy" alt="" />
+        <img :src="list.icon" @error="iconError" loading="lazy" alt="" />
     </div>
 </template>
 
@@ -145,6 +145,7 @@
 
 <script>
 import { faCheck, faMinus } from '@fortawesome/free-solid-svg-icons';
+import Logo from '!url-loader!../assets/Icon Slim.svg';
 import FA from './fa';
 
 export default {
@@ -163,6 +164,7 @@ export default {
     },
     data() {
         return {
+            Logo,
             icons: {
                 faCheck,
                 faMinus,
@@ -175,6 +177,12 @@ export default {
         },
         featureText() {
             return this.hasFeature ? 'Works with BotBlock guild count API' : 'No support for BotBlock guild count API';
+        },
+    },
+    methods: {
+        iconError(e) {
+            e.target.src = Logo;
+            e.target.style.opacity = '0.25';
         },
     },
 };

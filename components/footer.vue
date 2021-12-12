@@ -108,7 +108,7 @@
 
 <script>
 import { faDiscord, faPatreon, faReddit, faTwitter, faGithub } from '@fortawesome/free-brands-svg-icons';
-import Logo from './logo';
+import Logo from '../assets/Icon Slim.svg';
 import FA from './fa';
 
 export default {

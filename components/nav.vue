@@ -84,7 +84,7 @@
 
 <script>
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
-import Logo from './logo';
+import Logo from '../assets/Icon Slim.svg';
 import FA from './fa';
 
 export default {

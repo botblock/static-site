@@ -65,9 +65,19 @@ module.exports = {
                 type: 'json',
                 use: 'yaml-loader',
             });
+
             config.module.rules.push({
                 test: /\.md$/,
                 use: 'raw-loader',
+            });
+
+            config.module.rules.find(rule => rule.test.test('.svg')).test = /\.(png|jpe?g|gif|webp)$/;
+            config.module.rules.push({
+                test: /\.svg$/,
+                use: [
+                    'babel-loader',
+                    'vue-svg-loader',
+                ],
             });
         },
     },
