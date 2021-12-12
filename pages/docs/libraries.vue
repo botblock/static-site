@@ -9,15 +9,10 @@
         </div>
         <div class="libraries">
             <div class="container">
-                <Library :library="library" class="library" v-for="library in librariesOne" :key="library.repo" />
+                <Library :library="library" class="library" v-for="library in libraries" :key="library.repo" />
             </div>
         </div>
-        <ApiCta v-if="showCta" />
-        <div class="libraries">
-            <div class="container">
-                <Library :library="library" class="library" v-for="library in librariesTwo" :key="library.repo" />
-            </div>
-        </div>
+        <ApiCta footer />
         <Footer />
     </div>
 </template>
@@ -66,10 +61,6 @@
         border-bottom: 1px solid $brand;
     }
 }
-
-.footer {
-    margin: 2rem 0 0;
-}
 </style>
 
 <script>
@@ -95,20 +86,6 @@ export default {
         ApiCta,
         Footer,
         FA,
-    },
-    computed: {
-        librariesHalf() {
-            return Math.ceil(this.libraries.length / 2);
-        },
-        librariesOne() {
-            return this.libraries.slice(0, this.librariesHalf);
-        },
-        librariesTwo() {
-            return this.libraries.slice(this.librariesHalf);
-        },
-        showCta() {
-            return this.libraries.length >= 3;
-        },
     },
     data() {
         return {

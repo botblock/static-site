@@ -1,5 +1,5 @@
 <template>
-    <div class="cta">
+    <div :class="{ cta: true, footer }">
         <div class="container">
             <div>
                 <p><b>BotBlock API</b></p>
@@ -30,6 +30,15 @@ $triangle-height: 5rem;
     background: $brand;
     color: $dark;
     margin: $triangle-height 0;
+
+    &.footer {
+        margin: $triangle-height 0 -1rem;
+        padding: 0 0 1rem;
+
+        &::after {
+            display: none;
+        }
+    }
 
     .container {
         display: flex;
@@ -100,6 +109,12 @@ import FA from '../fa';
 export default {
     components: {
         FA,
+    },
+    props: {
+        footer: {
+            type: Boolean,
+            default: false,
+        },
     },
     data() {
         return {
