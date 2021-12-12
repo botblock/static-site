@@ -1,11 +1,11 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const jsonData = dir => fs.readdirSync(path.join(__dirname, 'vendor', 'data', 'data', dir))
     .map(file => file.match(/^(.+)\.json$/)[1])
     .filter(file => !!file);
 
-module.exports = {
+export default {
     target: 'static',
     head: {
         htmlAttrs: { lang: 'en' },
