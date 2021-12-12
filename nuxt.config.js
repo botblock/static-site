@@ -51,6 +51,7 @@ module.exports = {
     modules: [ '@nuxtjs/sitemap' ],
     buildModules: [ 'nuxt-resolve-url-loader' ],
     generate: {
+        crawler: false,
         fallback: '404.html',
         routes: [
             ...jsonData('lists').map(list => `/lists/${list}`),
