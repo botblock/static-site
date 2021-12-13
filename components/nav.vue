@@ -5,7 +5,10 @@
                 to="/"
                 class="logo"
             >
-                <Logo />
+                <Logo
+                    role="img"
+                    aria-label="Home"
+                />
             </NuxtLink>
 
             <div>
@@ -21,7 +24,11 @@
                 <a
                     href="/github"
                     target="_blank"
-                >GitHub <FA :icon="icons.faExternalLinkAlt" /></a>
+                >GitHub <FA
+                    :icon="icons.faExternalLinkAlt"
+                    role="img"
+                    aria-hidden="true"
+                /></a>
             </div>
         </div>
     </div>

@@ -19,21 +19,33 @@
                 <div>
                     <h3>Primary Language</h3>
                     <div class="text">
-                        <FA :icon="icons.faLanguage" />
+                        <FA
+                            :icon="icons.faLanguage"
+                            role="img"
+                            aria-hidden="true"
+                        />
                         <p>{{ list.language }}</p>
                     </div>
                 </div>
                 <div>
                     <h3>Owners</h3>
                     <div class="text">
-                        <FA :icon="icons.faUserFriends" />
+                        <FA
+                            :icon="icons.faUserFriends"
+                            role="img"
+                            aria-hidden="true"
+                        />
                         <p>{{ list.owners || 'Unknown' }}</p>
                     </div>
                 </div>
                 <div v-if="list.discord_only">
                     <h3>Discord Only</h3>
                     <div class="text">
-                        <FA :icon="icons.faDiscord" />
+                        <FA
+                            :icon="icons.faDiscord"
+                            role="img"
+                            aria-hidden="true"
+                        />
                         <p>
                             This list is for Discord bots only
                         </p>
@@ -42,7 +54,11 @@
                 <div v-else>
                     <h3>Multiple Platforms</h3>
                     <div class="text">
-                        <FA :icon="icons.faRobot" />
+                        <FA
+                            :icon="icons.faRobot"
+                            role="img"
+                            aria-hidden="true"
+                        />
                         <p>
                             This list includes bots for multiple platforms
                         </p>

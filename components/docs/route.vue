@@ -8,10 +8,16 @@
             <div>
                 <p>{{ route }}</p>
                 <a :href="`#${sluggify(route)}`">
-                    <FA :icon="icons.faLink" />
+                    <FA
+                        :icon="icons.faLink"
+                        aria-label="Section"
+                    />
                 </a>
                 <a @click.prevent="toggleVisible">
-                    <FA :icon="visible ? icons.faEye : icons.faEyeSlash" />
+                    <FA
+                        :icon="visible ? icons.faEye : icons.faEyeSlash"
+                        :aria-label="`Toggle Visibility: ${visible ? 'Visible' : 'Hidden'}`"
+                    />
                 </a>
             </div>
         </div>

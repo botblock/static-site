@@ -13,7 +13,11 @@
                 </p>
             </div>
             <NuxtLink to="/docs">
-                Read the docs <FA :icon="icons.faAngleRight" />
+                Read the docs <FA
+                    :icon="icons.faAngleRight"
+                    role="img"
+                    aria-hidden="true"
+                />
             </NuxtLink>
         </div>
     </div>

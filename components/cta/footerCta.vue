@@ -3,7 +3,11 @@
         <div class="container">
             <p>{{ text }}</p>
             <NuxtLink :to="link">
-                {{ button }} <FA :icon="icons.faAngleRight" />
+                {{ button }} <FA
+                    :icon="icons.faAngleRight"
+                    role="img"
+                    aria-hidden="true"
+                />
             </NuxtLink>
         </div>
     </div>

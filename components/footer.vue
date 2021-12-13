@@ -9,7 +9,10 @@
                         to="/"
                         class="logo"
                     >
-                        <Logo />
+                        <Logo
+                            role="img"
+                            aria-label="Home"
+                        />
                     </NuxtLink>
                     <p>
                         &copy; {{ year }} BotBlock
@@ -39,19 +42,39 @@
 
                 <div>
                     <a href="/discord">
-                        <FA :icon="icons.faDiscord" />
+                        <FA
+                            :icon="icons.faDiscord"
+                            role="img"
+                            aria-label="Discord"
+                        />
                     </a>
                     <a href="/patreon">
-                        <FA :icon="icons.faPatreon" />
+                        <FA
+                            :icon="icons.faPatreon"
+                            role="img"
+                            aria-label="Patreon"
+                        />
                     </a>
                     <a href="/reddit">
-                        <FA :icon="icons.faReddit" />
+                        <FA
+                            :icon="icons.faReddit"
+                            role="img"
+                            aria-label="Reddit"
+                        />
                     </a>
                     <a href="/twitter">
-                        <FA :icon="icons.faTwitter" />
+                        <FA
+                            :icon="icons.faTwitter"
+                            role="img"
+                            aria-label="Twitter"
+                        />
                     </a>
                     <a href="/github">
-                        <FA :icon="icons.faGithub" />
+                        <FA
+                            :icon="icons.faGithub"
+                            role="img"
+                            aria-label="GitHub"
+                        />
                     </a>
                 </div>
             </div>

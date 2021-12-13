@@ -2,7 +2,10 @@
     <div :class="{ feature: true, small }">
         <div class="info">
             <div class="icon">
-                <FA :icon="featureIcon(feature.type)" />
+                <FA
+                    :icon="featureIcon(feature.type)"
+                    :aria-label="featureIconLabel(feature.type)"
+                />
             </div>
             <p v-if="small">
                 {{ feature.name }}
@@ -13,7 +16,11 @@
         </div>
         <p>{{ feature.description }}</p>
         <NuxtLink :to="`/features/${feature.id}`">
-            Explore feature <FA :icon="icons.faAngleRight" />
+            Explore feature <FA
+                :icon="icons.faAngleRight"
+                role="img"
+                aria-hidden="true"
+            />
         </NuxtLink>
     </div>
 </template>
@@ -136,6 +143,11 @@ export default {
             if (type === 0) return this.icons.faAngleUp;
             if (type === 1) return this.icons.faMinus;
             if (type === 2) return this.icons.faAngleDown;
+        },
+        featureIconLabel(type) {
+            if (type === 0) return 'Positive';
+            if (type === 1) return 'Neutral';
+            if (type === 2) return 'Negative';
         },
     },
 };

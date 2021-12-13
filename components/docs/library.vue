@@ -17,10 +17,16 @@
                     {{ library.repo }}
                 </a>
                 <a :href="`#${sluggify(library.repo)}`">
-                    <FA :icon="icons.faLink" />
+                    <FA
+                        :icon="icons.faLink"
+                        aria-label="Section"
+                    />
                 </a>
                 <a @click.prevent="toggleVisible">
-                    <FA :icon="visible ? icons.faEye : icons.faEyeSlash" />
+                    <FA
+                        :icon="visible ? icons.faEye : icons.faEyeSlash"
+                        :aria-label="`Toggle Visibility: ${visible ? 'Visible' : 'Hidden'}`"
+                    />
                 </a>
             </div>
         </div>
@@ -37,13 +43,15 @@
                     >
                         <img
                             :src="library.badge_image"
-                            alt=""
+                            loading="lazy"
+                            alt="Library badge"
                         >
                     </a>
                     <img
                         v-else
                         :src="library.badge_image"
-                        alt=""
+                        loading="lazy"
+                        alt="Library badge"
                     >
                 </div>
 
@@ -52,14 +60,22 @@
                     target="_blank"
                 >
                     View on {{ library.package_link_name }}
-                    <FA :icon="icons.faExternalLinkAlt" />
+                    <FA
+                        :icon="icons.faExternalLinkAlt"
+                        role="img"
+                        aria-hidden="true"
+                    />
                 </a>
                 <a
                     :href="`https://github.com/${library.repo}`"
                     target="_blank"
                 >
                     View on GitHub
-                    <FA :icon="icons.faExternalLinkAlt" />
+                    <FA
+                        :icon="icons.faExternalLinkAlt"
+                        role="img"
+                        aria-hidden="true"
+                    />
                 </a>
             </div>
             <div>

@@ -9,13 +9,21 @@
             <div class="container">
                 <p>{{ defunctCount }} lists are marked as defunct and not shown here.</p>
                 <NuxtLink to="/lists/defunct">
-                    View defunct lists <FA :icon="icons.faAngleRight" />
+                    View defunct lists <FA
+                        :icon="icons.faAngleRight"
+                        role="img"
+                        aria-hidden="true"
+                    />
                 </NuxtLink>
             </div>
             <div class="container">
                 <p>{{ hiddenCount }} lists are marked as hidden and not shown here.</p>
                 <NuxtLink to="/lists/hidden">
-                    View hidden lists <FA :icon="icons.faAngleRight" />
+                    View hidden lists <FA
+                        :icon="icons.faAngleRight"
+                        role="img"
+                        aria-hidden="true"
+                    />
                 </NuxtLink>
             </div>
         </div>

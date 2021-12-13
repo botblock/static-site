@@ -23,7 +23,11 @@
                     :list="list"
                 />
                 <NuxtLink to="/lists">
-                    Explore more lists <FA :icon="icons.faAngleRight" />
+                    Explore more lists <FA
+                        :icon="icons.faAngleRight"
+                        role="img"
+                        aria-hidden="true"
+                    />
                 </NuxtLink>
             </div>
         </div>

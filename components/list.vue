@@ -23,14 +23,20 @@
                 >Discord</a>
             </div>
             <div :class="{ feature: true, active: hasFeature }">
-                <div><FA :icon="hasFeature ? icons.faCheck : icons.faMinus" /></div>
+                <div>
+                    <FA
+                        :icon="hasFeature ? icons.faCheck : icons.faMinus"
+                        role="img"
+                        :aria-label="hasFeature ? 'Positive' : 'Negative'"
+                    />
+                </div>
                 <p>{{ featureText }}</p>
             </div>
         </div>
         <img
             :src="list.icon"
             loading="lazy"
-            alt=""
+            alt="List icon"
             @error="iconError"
         >
     </div>

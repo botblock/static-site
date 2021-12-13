@@ -10,7 +10,11 @@
                 </p>
             </div>
             <NuxtLink to="/docs/libraries">
-                Explore libraries <FA :icon="icons.faAngleRight" />
+                Explore libraries <FA
+                    :icon="icons.faAngleRight"
+                    role="img"
+                    aria-hidden="true"
+                />
             </NuxtLink>
         </div>
     </div>
