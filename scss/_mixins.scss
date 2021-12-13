@@ -28,9 +28,14 @@
 
 @mixin triangleAfter($height: 5rem) {
     @include _triangleBase('after') {
-        left: 0;
+        right: 0;
         bottom: -$height;
         border-width: $height 100vw 0 0;
         border-color: $brand transparent transparent;
+
+        @supports (overflow-x: clip) {
+            left: 0;
+            right: unset;
+        }
     }
 }
