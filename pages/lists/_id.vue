@@ -8,10 +8,12 @@
                     <p>{{ list.description }}</p>
                     <p>Added: {{ formatDate(list.added) }}</p>
                 </div>
-                <List
-                    :list="list"
-                    hide-information-link
-                />
+                <div>
+                    <List
+                        :list="list"
+                        hide-information-link
+                    />
+                </div>
             </div>
         </div>
         <div class="container">
@@ -210,6 +212,11 @@
 
         @media (min-width: $tablet) {
             flex-basis: 50%;
+
+            &:last-child {
+                display: flex;
+                justify-content: flex-end;
+            }
         }
     }
 
