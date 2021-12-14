@@ -32,6 +32,7 @@
                 text="Are we missing a list? Let us know what lists to track on GitHub."
                 button="Submit a list"
                 link="/submit"
+                external
             />
         </Footer>
     </div>

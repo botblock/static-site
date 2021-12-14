@@ -2,7 +2,20 @@
     <div class="cta">
         <div class="container">
             <p>{{ text }}</p>
-            <NuxtLink :to="link">
+            <a
+                v-if="external"
+                :href="link"
+            >
+                {{ button }} <FA
+                    :icon="icons.faAngleRight"
+                    role="img"
+                    aria-hidden="true"
+                />
+            </a>
+            <NuxtLink
+                v-else
+                :to="link"
+            >
                 {{ button }} <FA
                     :icon="icons.faAngleRight"
                     role="img"
@@ -83,6 +96,10 @@ export default {
         link: {
             type: String,
             required: true,
+        },
+        external: {
+            type: Boolean,
+            default: false,
         },
     },
     data() {
