@@ -53,6 +53,7 @@ export default {
     generate: {
         crawler: false,
         fallback: '404.html',
+        subFolders: false,
         routes: [
             ...jsonData('lists').map(list => `/lists/${list}`),
             ...jsonData('features').map(feature => `/features/${feature}`),
