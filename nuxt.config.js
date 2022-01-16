@@ -53,7 +53,7 @@ export default {
     generate: {
         crawler: false,
         fallback: '404.html',
-        subFolders: false,
+        subFolders: true, // TODO: Set to false once Cf bug with period asset resolution is fixed
         routes: [
             ...jsonData('lists').map(list => `/lists/${list}`),
             ...jsonData('features').map(feature => `/features/${feature}`),
@@ -84,49 +84,49 @@ export default {
     },
     sitemap: {
         hostname: 'https://botblock.org',
-        routes: [
+        routes: [ // TODO: Remove trailing slash once Cf bug with period asset resolution is fixed
             {
                 url: '/',
                 priority: 1,
             },
             {
-                url: '/docs',
+                url: '/docs/',
                 priority: 0.9,
             },
             {
-                url: '/docs/libraries',
+                url: '/docs/libraries/',
                 priority: 0.8,
             },
             {
-                url: '/lists',
+                url: '/lists/',
                 priority: 0.8,
             },
             {
-                url: '/features',
+                url: '/features/',
                 priority: 0.7,
             },
             ...jsonData('lists').map(list => ({
-                url: `/lists/${list}`,
+                url: `/lists/${list}/`,
                 priority: 0.6,
             })),
             {
-                url: '/lists/best-practices',
+                url: '/lists/best-practices/',
                 priority: 0.5,
             },
             {
-                url: '/about',
+                url: '/about/',
                 priority: 0.5,
             },
             ...jsonData('features').map(feature => ({
-                url: `/features/${feature}`,
+                url: `/features/${feature}/`,
                 priority: 0.4,
             })),
             {
-                url: '/lists/defunct',
+                url: '/lists/defunct/',
                 priority: 0.3,
             },
             {
-                url: '/lists/hidden',
+                url: '/lists/hidden/',
                 priority: 0.2,
             },
         ],
