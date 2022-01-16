@@ -7,6 +7,19 @@
                 <p>{{ subtitle }}</p>
             </div>
         </div>
+        <div class="controls">
+            <div class="container">
+                <p>Sort:</p>
+                <Select
+                    ref="sortSelect"
+                    v-model="sort"
+                    :options="sortOptions"
+                    :clearable="false"
+                    @open="sortOpen"
+                    @close="sortClose"
+                />
+            </div>
+        </div>
         <div class="lists">
             <div class="container">
                 <List
@@ -65,6 +78,56 @@
     }
 }
 
+.controls {
+    &::v-deep {
+        $vs-colors: (
+            lightest: rgba($light, .75), // Border
+            light: $light, // Controls
+            dark: $light, // Selected
+            darkest: #000, // Shadow (unused)
+        );
+        $vs-state-active-bg: $brand;
+        $vs-dropdown-bg: $dark;
+        $vs-dropdown-box-shadow: none;
+
+        @import 'vue-select/src/scss/vue-select.scss';
+
+        .v-select {
+            &.vs--single {
+                &.vs--open {
+                    .vs__selected {
+                        position: unset; // Absolute positioning causes sizing issues
+                    }
+                }
+
+                .vs__dropdown-option {
+                    color: $light; // Not defined by a variable
+                }
+
+                .vs__search {
+                    display: none; // We don't enable search
+                }
+
+                .vs__dropdown-menu {
+                    min-width: unset; // No fixed width to avoid sizing mis-match
+                    width: unset;
+                }
+            }
+        }
+    }
+
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+
+        p {
+            margin: 0 .5em;
+        }
+    }
+}
+
 .lists {
     .container {
         display: flex;
@@ -83,12 +146,25 @@
 
 <script>
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import Select from 'vue-select';
 import Nav from './nav';
 import ApiCta from './cta/apiCta';
 import List from './list';
 
+const sort = [
+    {
+        label: 'Alphabetical',
+        code: 'alpha',
+    },
+    {
+        label: 'Newest',
+        code: 'added',
+    },
+];
+
 export default {
     components: {
+        Select,
         Nav,
         ApiCta,
         List,
@@ -109,6 +185,8 @@ export default {
     },
     data() {
         return {
+            sortOptions: sort,
+            sort: sort[0],
             icons: {
                 faAngleRight,
             },
@@ -117,7 +195,10 @@ export default {
     computed: {
         listsSorted() {
             return [...this.lists].sort((a, b) => {
-                if (a.discord_only !== b.discord_only) return a.discord_only ? -1 : 1;
+                // Sort by newest
+                if (this.sort.code === 'added' && a.added !== b.added) return a.added < b.added ? 1 : -1;
+
+                // Alpha sort by default, and as fallback
                 return a.id.localeCompare(b.id) > 0 ? 1 : -1;
             });
         },
@@ -132,6 +213,21 @@ export default {
         },
         showCta() {
             return this.lists.length >= 8;
+        },
+    },
+    methods: {
+        sortOpen() {
+            this.$nextTick(() => {
+                const max = Math.max(
+                    this.$refs.sortSelect.$el.clientWidth,
+                    this.$refs.sortSelect.$refs.dropdownMenu.clientWidth,
+                );
+                this.$refs.sortSelect.$refs.toggle.style.width = `${max}px`;
+                this.$refs.sortSelect.$refs.dropdownMenu.style.width = `${max}px`;
+            });
+        },
+        sortClose() {
+            this.$refs.sortSelect.$refs.toggle.style.width = '';
         },
     },
 };
