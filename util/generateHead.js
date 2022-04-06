@@ -22,8 +22,7 @@ export default (meta, context) => {
     const pageKeywords = contextKeywords.concat(defaultKeywords).join(', ');
 
     // Get base & page URL
-    // TODO: Remove trailing slash once Cf bug with period asset resolution is fixed
-    const pageUrl = `https://botblock.org${context.$route.path}/`;
+    const pageUrl = `https://botblock.org${context.$route.path}`;
 
     return {
         title: pageTitle,
